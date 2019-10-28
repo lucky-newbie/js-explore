@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id = 'a'>
+    aaaa
+    <a>sssss</a>
+  </div>
+</body>
+<script>
+  /*
+    编写一个通用的事件监听函数
+    事件冒泡流程
+    对于一个无限下拉加载图片的页面，如何给每个图片绑定一个事件
+  */
+
+  /*
+    知识点：
+    通用事件绑定(对于IE低版本的兼容性)
+    事件冒泡/事件捕获
+      DOM树形结构 - > 事件冒泡 -> 阻止冒泡
+    代理
+      使用代理优点： 代码简洁/ 对浏览器压力少
+  */
+</script>
+<script>
+
+    // 通过代理方式
+    function bindEvent(ele, type, selector, fn) {
+      if (fn == null) {
+        fn = selector;
+        selector = null
+      }
+      ele.addEventListener(type, function(e) {
+        if (selector) {
+          // 有selector，则认为是存在代理，只为 selector类型的节点绑定事件
+          const target = e.target;
+          if (target.matches(selector)) {
+            fn.call(target, e)
+          }
+        } else {
+          // 没有代理，直接绑定事件
+          fn(e)
+        }
+      })
+    }
+
+    // 测试
+    const dom = document.getElementById('a');
+
+
+    bindEvent(dom, 'click', 'a', function(e) {
+      e.preventDefault();
+      console.log(this.innerHTML)
+    })
+
+    bindEvent(dom, 'click', function(e) {
+      console.log('click div')
+    })
+
+
+
+</script>
+</html>

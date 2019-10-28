@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+  // DOM = document object model
+  /*
+    题目：
+    DOM是哪种基本的数据结构？
+      tree
+    DOM常用的API有哪些？
+      document.getElementById
+      document.getElementsByTagName
+      document.getElementsByClassName
+    DOM节点的attr和property有啥区别
+      property：是js对象的一个属性， 是DOM中的属性，是JavaScript里的对象；
+      attribute：是HTML标签上的特性，它的值只能够是字符串；
+  */
+
+  /*
+    1.DOM本质是什么：
+      浏览器将HTML转换为浏览器和计算机可识别的一种结构对象
+    2.DOM节点操作：
+    3.DOM结构操作:
+      新增节点
+        a.新增节点
+          const d = document.createElement('div');
+          d.innerHTML = xxxx
+          document.body.appendChild(d)
+        b.基于已有节点进行移动(将节点从原位置移动到目标节点下)
+          var d2 = document.getElementById('id');
+          document.getElementById('id2').appendChild(d2)
+      获取父元素
+        parentElement;
+      获取子元素
+        childNodes
+      删除节点
+
+
+  */
+  // HTML是XML的一种特殊结构
+
+</script>
+<script>
+  // 获取DOM节点
+  document.getElementById(XXXX);
+  const divList = document.getElementsByTagName('div');
+  console.log('divList', divList.length);
+  console.log('divList[0]', divList[0]);
+  const list = document.getElementsByClassName('class');
+
+</script>
+<script>
+  // BOM: browser object model
+
+  /*
+    如何检测浏览器的类型
+    拆解url的各部分
+  */
+  // navigator
+
+  
+  // screen
+  // location
+    console.log(location.href);
+    console.log(location.protocol);
+    console.log(location.pathname);
+    console.log(location.search);
+    console.log(location.hash)
+
+  // history
+    history.back();
+    history.forward();
+    hostory.go();
+    history.pushState;
+    
+</script>
+<body>
+  <h2>JS基础知识</h2>
+  JS-web-api
+
+</body>
+</html>

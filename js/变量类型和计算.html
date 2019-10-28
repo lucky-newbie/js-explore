@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>变量类型计算</title>
+</head>
+<script>
+  // js 基本数据类型： number string boolean null undefined symbol
+  // js 引用类型
+  var num = 1;
+  var str = 'abc';
+  var bool = true;
+  var obj = { 
+    name: 'Tom'
+  };
+  var a = null;
+  var b = undefined;
+  console.log(typeof num); // 'num'
+  console.log(typeof str); // 'string'
+  console.log(typeof bool) // 'bool'
+  console.log(typeof obj) // 'object'
+  console.log(typeof a); // 'object'
+  console.log(typeof b); // 'undefined'
+  console.log(typeof Function); // 'function'
+  console.log(typeof Number) // 'function'
+// 类型转换场景
+/**
+* 1.字符串拼接;
+* var a = 100; var b = '10'; var c = a + b;
+
+* 2. == 使用场景; 
+* var a = 1; var b = '1'; a == b;
+* 3.if语句; 
+* var a = 1; if (a) {...}
+* 4. 逻辑运算
+*/
+
+
+// js内置函数
+/*
+  Object
+  Array
+  Boolean
+  Number
+  String
+  Function
+  Date
+  Regexp
+  Error
+*/
+
+// Math为内置对象
+// 变量按照存储类型区分： 值类型/引用类型
+
+// 如何理解JSON
+/*
+  JSON不属于内置函数，只是一个JS对象，包含两个方法： 
+    JSON.stringify({a:1}); 
+    JSON.parse('{"a": "1"}')
+  JSON是一种数据格式
+*/
+</script>
+<body>
+  
+</body>
+</html>

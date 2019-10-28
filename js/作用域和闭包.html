@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+  // 变量提前/函数声明提前
+  function fn() {
+    // 函数声明
+  }
+  var fn1 = function (){} // 函数表达式
+</script>
+<script>
+  /**
+    1.变量提升的理解
+    2.说明this几种不同的使用场景
+    3.创建10个<a>标签，点击的时候弹出对应的序号；
+    4.如何理解作用域
+      a.自由变量
+      b.作用域链，即自由变量的查找
+      c.闭包的两个场景
+    5.实际开发中闭包的应用
+    
+   **/
+
+   /**
+    * 执行上下文
+    1.全局： 变量定义/函数声明
+    2.函数：变量定义/函数声明/this/arguments
+    注意： “函数声明”和“函数表达式”的区别
+    */
+
+    // this要在执行时才能确认值，定义时无法确认
+
+    /*
+      this的使用场景：
+      1.作为构造函数执行
+        function Foo(name) {
+          this.name = name
+        }
+        var f = new Foo('test');
+
+      2.作为对象属性执行
+        var obj = {
+          name: 'AAA',
+          print: function(){console.log(this.name)}
+        }
+        obj.print();
+
+      3.作为普通函数执行
+        function fn() {
+          console.log(this); // this === window
+        }
+        
+      4.call、bind、apply
+        function fn1(name) {
+          console.log(name, this)
+        }
+        fn1.call({x:1}, 'zhangsan'); // 此时this指向{x:1}
+        // bind 写法
+        const fn2 = function (name) {
+          console.log('name', name);
+          console.log(this);
+        }.bind({x: 1})
+        fn2('zhangsan')
+    */
+
+</script>
+<script>
+  // 作用域
+  /*
+    1.没有块级作用域（ES5中， ES6中增加let/const解决块级作用域）
+      if (true) {var a = 1;} 
+      console.log(a)
+      通过var定义的方式，无块级作用域，所以会输出a = 1，但如果使用es6方式
+      if (true) {const a = 1}; console.log(a), es6中有块级作用域，则console.log(a)会报错， a is not defined
+    2.只有函数和全局作用域
+
+  */
+</script>
+<script>
+
+  /*
+    闭包
+    1.函数作为返回值, 如第一个示例
+    2.函数作为参数（callback）
+  */
+  // 示例1
+    function fn1() {
+      var a = 100;
+      return function () {
+        console.log(a)
+      }
+    }
+    var f1 = fn1();
+    var a = 200;
+    f1(); // 100
+
+  // 示例2
+    function fn1() {
+      var a = 100;
+      return function () {
+        console.log(a)
+      }
+    }
+    var f1 = fn1();
+    function fn2(fn) {
+      var a = 200;
+      fn();
+    }
+    fn2(f1); // 100
+
+    // let const 块级作用域如何实现
+    
+    
+</script>
+<body>
+  
+</body>
+<script>
+  // 通过将var修改为let 可避免这个问题
+  for (var i = 0; i < 3; i++) {
+    var dom = document.createElement('a');
+    dom.innerHTML = i + '<br />';
+    dom.addEventListener('click', function (e) {
+      e.preventDefault();
+      console.log(i)
+    })
+    document.body.appendChild(dom)
+  }
+
+
+  // 或者采用创建函数，增加函数作用域避免上述问题
+  for (var i = 0; i < 10; i++) {
+    (function (i) {
+      var a = document.createElement('a');
+      a.innerHTML = i + '<br />';
+      a.addEventListener('click', function (e) {
+        console.log(i)
+      })
+      document.body.appendChild(a)
+    })(i)
+  }
+</script>
+
+</html>

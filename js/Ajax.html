@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+  /*题目
+    手写一个AJAX的实现
+    跨域的几种实现方式/原理是什么
+  */
+  
+  /*知识点
+    XMLHttpRequest
+    状态码说明
+    跨域
+  */
+  
+
+</script>
+<script>
+  // ajax基于XMLHttpRequest对象实现
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/api',false);
+  // onreadystatechange方法为异步方法， 每次readyState状态码改变都会触发此方法
+  xhr.onreadystatechange = function () {
+    /*
+      readyState状态码说明：
+      0: 未初始化， 还没有调用send方法
+      1: 载入， 已调用send方法，正在发送请求
+      2: 载入完成， send方法执行完成，已经接收到全部响应内容
+      3: 交互，正在解析响应内容
+      4: 完成，响应内容解析完成，可以在客户端调用
+    */
+    // 判断readyState
+    if (xhr.readyState == 4) {
+      // 判断Http状态码
+      if (xhr.status == 200) {
+        alert(xhr.responseText)
+      }
+    }
+  }
+  xhr.send();
+  // IE兼容性： 通过ActiveXObject实现， 和W3C标准不同
+
+</script>
+<body>
+  
+</body>
+<script>
+  /*
+    什么是跨域
+      浏览器有同源策略， 不允许访问ajax其他域接口
+      跨域条件： 协议/端口/域名，有一个不同就算跨域
+      
+    JSONP（前端设置）
+    服务端设置（http header）
+  */
+
+
+</script>
+</html>

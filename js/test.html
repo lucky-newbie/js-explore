@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+
+console.log('******原型链集成***************************')
+// function Parent () {
+//     this.name = []
+//   }
+
+//   Parent.prototype.getName = function(){
+//     console.log(this.name)
+//   }
+
+//   function Child() {
+
+//   }
+//   Child.prototype = new Parent();
+//   var child = new Child();
+//   var child2 = new Child();
+//   child2.name.push('sss')
+//   console.log(child.name)
+
+  console.log('*****借用构造函数继承*********************************')
+
+  // function Parent (name) {
+  //   this.name = name;
+  // }
+
+  // function Child (name) {
+  //   Parent.call(this, name)
+  // }
+
+  // var child = new Child('Tom');
+  // console.log(child.name)
+
+
+  console.log('******组合继承*******************************************')
+  function Parent(){
+    this.name = [];
+  }
+  Parent.prototype.getName = function () {
+    return this.name
+  }
+
+  function Child (age) {
+    Parent.call(this);
+    this.age = age;
+  }
+
+  Child.prototype = new Parent();
+  var child2 = new Child(23);
+  child2.name.push(1)
+  console.log(child2)
+  Child.prototype = new Parent();
+  var child3 = new Child(43);
+  child3.name.push(2)
+  console.log(child3)
+
+</script>
+<body>
+  
+</body>
+</html>

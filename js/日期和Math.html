@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+  /*
+    题目
+    获取2017-06-10格式日期 // Date
+    获取随机数，要求是长度一致的字符串 // Math
+    写一个能遍历对象和数据的通用forEach函数 // 数组API/对象Api
+  */
+
+    // 日期Date函数
+    var date = new Date();
+    Date.now(); // 获取当前时间的毫秒数
+    date.getTime(); // 获取毫秒数
+    date.getFullYear(); // 年, 2019
+    date.getMonth(); // 月（0-11）
+    date.getDate(); // 日（0-31）
+    date.getHours(); // 时（0-23）
+    date.getMinutes(); // 分（0-59）
+    date.getSeconds(); // 秒（0-59）
+
+    // Math函数
+    Math.random(); // 返回大于0小于1的浮点数,每次长度都不一样
+    Math.random().toFixed(2);
+
+    // 数组Array
+    const a = [1,2,3,4];
+    a.forEach; // 遍历所有元素，无返回值，原数组不变
+    a.every; // 判断所有元素是否都符合条件， 返回boolean，原数组不变
+    a.some; // 判断是否至少有一个元素符合条件， 返回boolean， 元素组不变
+    a.sort; // 排序，返回排序后的数组，原数组改变
+    a.map; // 对元素重新组装，返回新的数组，原数组不变
+    a.filter // 返回过来不符合条件的元素， 元数组不变
+    a.push; // 数组添加元素， 返回push的内容， 原数组改变
+    a.pop; // 弹出最后一个位置元素，返回弹出的元素，原数组改变
+    a.shift; // 删除数组中第一个位置的元素， 返回删除的元素， 原数组改变
+    a.unshift; // 在数组第一个位置添加元素, 返回添加的的元素，原数组改变
+
+
+    // 对象API
+    // for in
+    // for of
+
+</script>
+<body>
+</body>
+<script>
+  // 日期格式化
+  function formatData(dt) {
+    if (!dt) {
+      dt = new Date();
+    }
+    const year = dt.getFullYear();
+    let month = dt.getMonth() + 1;
+    let day = dt.getDay();
+    if (month < 10) {
+      month = `0${month}`;
+    }
+    if (day < 10) {
+      day = `0${day}`;
+    }
+    const format = `${year}-${month}-${day}`;
+    return format;
+  }
+  const dd = new Date();
+  console.log(formatData(dd))
+</script>
+<script>
+  // 获取固定长度的随机数
+  (Math.random() + '00000000').slice(0, 8);
+  Math.random().toFixed(8);
+</script>
+<script>
+  // 编写一个能遍历对象和数据的通用forEach函数 // 数组API/对象Api
+  function forEach(obj, fn) {
+    if (obj instanceof Array) {
+      obj.forEach((item, index) => {
+        fn(index, item)
+      })
+    } else {
+      for (key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          fn(key, obj[key])
+        }
+      }
+    }
+  }
+</script>
+</html>

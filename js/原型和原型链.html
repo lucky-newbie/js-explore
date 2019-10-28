@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+
+  // 如何判断一个变量是否是数组对象
+  // 原型链继承的例子（继承的集中方式）
+  // new 一个对象的过程
+  // zept 中如何使用原型链
+
+  /*
+    var a = {} 是 var a = new Object()的语法糖
+    var a = []; 是 var a = new Array()的语法糖
+    function Foo(){} 是var Foo = new Function(){}语法糖
+
+  */
+
+  // 原型规则
+  /**
+   1.所有的引用类型（数组/对象/函数），都具有对象特性，即可自由扩展属性（null除外）,如：
+    var obj = {};
+    obj.a = 1;
+
+   2.所有的引用类型（数组/对象/函数）,都有一个__proto__(隐式原型)属性，属性值是一个普通的对象(null除外)，如
+    console.log(obj.__proto__) // Object
+   
+   3.所有的函数，都有一个prototype（显示原型）属性，属性值也是一个普通对象,如：
+     function fn () {};
+     console.log(fn.prototype)
+
+   4.所有的引用类型（数组/对象/函数），__proto__(隐式原型)属性值指向它的构造函数的“prototype”属性值
+     obj.__proto__ === Object.prototype; // true 
+
+   5.当试图得到一个引用类型的某个属性时，如果这个对象上没有这个属性，那么会去它的__proto__上寻找，
+     即从当前对象的构造函数上的prototype上进行寻找.
+
+  */
+
+</script>
+<script>
+  // instanceof 用于判断引用类型属于哪个构造函数的方法, 如：
+  var a = [];
+  a instanceof Array; // true
+  // instanceof 原理：从当前引用的proto一层一层顺着原型链往上找，能否找到对应的prototype。找到了就返回true。
+  // instanceof 实现：
+  function instance_of(L, R) {//L 表示左表达式，R 表示右表达式 
+    var O = R.prototype;   // 取 R 的显示原型 
+    L = L.__proto__;  // 取 L 的隐式原型
+    while (true) {    
+      if (L === null) {
+        return false;   
+      }   
+      if (O === L) {
+        // 当 O 显式原型 严格等于  L隐式原型 时，返回true
+        return true;
+      }   
+      L = L.__proto__;  
+    }
+  }
+
+</script>
+
+<script>
+  // 示例题
+  function Foo () {
+    getName = function () {
+      console.log(1);
+    };
+    return this;
+  }
+  Foo.getName = function () {
+    console.log(2);
+  };
+  Foo.prototype.getName = function () {
+    console.log(3);
+  };
+  var getName = function () {
+    console.log(4);
+  };
+  function getName () {
+    console.log(5)
+  }
+
+  console.log("Foo.getName():", Foo.getName()); // 2
+  console.log("getName():",getName()); // 4
+  console.log("Foo().getName():", Foo().getName()); // 3 ------ 1
+  console.log('getName()', getName()); // 1
+  console.log('new Foo.getName()', new Foo.getName()); // 2
+  console.log('new Foo().getName():', new Foo().getName()); // 3
+  console.log('new new Foo().getName():', new new Foo().getName()); // 2 ---- 3
+
+</script>
+<body>
+  <div id ='id'>ssdsadasdasdasd</div>
+</body>
+<script>
+    // 原型链继承的例子
+    function Elem (domId) {
+      this.ele = document.getElementById(domId);
+    }
+  
+    Elem.prototype.html = function (text) {
+      var ele = this.ele;
+      ele.innerHTML = text;
+      return this; // 当前this可不返回，为了进行链式操作
+    }
+  
+    Elem.prototype.on = function (type, handleFn) {
+      var ele = this.ele;
+      ele.addEventListener(type, handleFn);
+    }
+    var dom = new Elem('id');
+    dom.html('tttttt').on('click', function(){alert(1)})
+  
+  </script>
+</html>
