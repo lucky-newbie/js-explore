@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+  /*
+    题目：
+      1.cookie/sessionStorage/localStorage区别
+  */
+  /*
+    知识点：cookie/ sessionStorage和localStorage
+  */
+
+  // cookie: 本身用于客服端和服务端进行通信的， 但本身有本地存储功能，于是被借用了
+  document.cookie = 'XXX'; // 即可获取修改cookie
+  /*
+    cookie用于存储的缺点：
+    1.存储量太小，只有4KB
+    2.所有的http请求都会带着，会影响获取资源的效率
+    3.API简单，需要封装才能用
+  */
+
+  /*
+    localStorage和sessionStorage:
+    1.最大容量5M；
+    2.API简单易用；
+    3.sessionStorage如果浏览器关闭，则信息会被清空，localStorage则手动清除后才被清除
+
+    IOS 下safari在隐藏模式下， localStorage.getItem()会报错，建议统一使用try-catch封装
+
+  */  
+</script>
+
+<body>
+  
+</body>
+</html>

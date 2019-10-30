@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>运行环境</title>
+</head>
+<script>
+  /*
+    页面加载
+  */
+  /*
+    题目：
+    1.从输入url到得到html的详细过程
+    2.window.onload 与 DOMContentLoaded区别
+    onload: 页面全部资源加载完才会执行，包括图片/视频等
+    DOMContentLoaded: DOM渲染完即可执行，此时图片、视频还没加载完
+  */
+
+  /*
+    知识点：
+    1.加载资源的形式
+      a. 输入url（或跳转页面）加载html
+      b. 加载html中的静态资源, 如：
+        <script src='xxxx'></scrip>
+
+    2 加载一个资源的过程（简化版）
+      a.浏览器根据DNS服务器得到域名的IP地址
+      b.向这个IP的机器发送http请求
+      c.服务器收到、处理并返回http请求
+      d.浏览器得到返回内容
+
+    3 浏览器渲染页面的过程(简化版)
+      a.根据HTML结构生成DOM tree
+      b.根据CSS生成CSSOM
+      c.将DOM 和 CSSOM整合为RenderTree（与DOMTree结构一样，但此处包含了每个节点的样式）
+      d.根据RenderTree开始渲染和展示
+      e.遇到<script>时，会执行并阻塞渲染
+  */
+  // 为什么执行js会阻塞页面渲染？ 因为JS可以操作DOM，渲染时也需要DOMtree， 未避免冲突，则会等JS执行完在进行渲染
+ // 为什么css要放到head标签中？ 因为放到head中时，渲染body时就可以直接按照样式渲染出来
+</script>
+<body>
+  页面加载过程
+  性能优化
+  安全性
+</body>
+</html>

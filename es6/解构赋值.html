@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+
+  /*
+    解构赋值的分类：
+      数组解构赋值；对象解构赋值；字符串解构赋值；
+      布尔值解构赋值；函数参数解构赋值；数值解构赋值；
+  */
+
+  /*
+    数组解构赋值应用场景：
+      1.变量交换
+      2.函数返回值解构赋值
+  */
+  {
+    let a,b, rest;
+    [a, b] = [1, 2]; // 数组解构赋值; a = 1 b = 2
+    [a, b, ...rest] = [1, 2, 3, 4, 6]; // a = 1 b = 2 rest = [3, 4, 6]
+  }
+
+  {
+    let a, b, c;
+    // ({a, b, c} = {a: 1, b: 2})
+    // console.log(a, b, c) // 1,2, undefined
+    ({a, b, c = 3} = {a: 1, b: 2})
+    console.log('默认值：',a, b, c) // 1, 2, 3
+  }
+
+  {
+    let a = 1; b = 2;
+    [a, b] = [b, a];
+    console.log('变量交换',a, b)
+  }
+
+  {
+    // 函数返回值解构赋值
+    function fn() {
+      return [1, 2];
+    }
+    let a,b;
+    [a, b] = fn();
+    console.log('函数返回值解构赋值： ',a, b);
+  }
+
+  {
+    function fn() {
+      return [1,2,3,4,5];
+    }
+    let a, b;
+    [a, ...b] = fn();
+    console.log('a',a, 'b', b)
+  }
+
+</script>
+<script>
+  console.log('对象解构赋值')
+  /*
+    对象解构赋值
+    应用场景：
+      对象和数组嵌套，进行解构赋值
+  */
+  {
+    let a = { p: 42, q: true};
+    const { p, q} = a;
+    console.log(p, q);
+  }
+  {
+    const {a = 10, b = 5} = {a: 3}; // 此处如果key找不到，则使用默认值
+    console.log(a, b)
+  }
+
+  {
+    const data = {
+      title: 'aaa',
+      res: [
+        {
+          title: 'bbbb',
+          des: 'eds'
+        }
+      ]
+    }
+    const { title: t, res: [{title: b}]} = data;
+    console.log(t, b)
+  }
+</script>
+<body>
+    解构赋值
+</body>
+</html>

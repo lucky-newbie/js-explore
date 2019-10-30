@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=s, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>数组扩展</h2>
+  Array.from: 方法从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。<br /> 
+
+  Array.of: 将一组数据转换为数组<br />
+
+  copyWithin<br />
+
+  find\findIndex<br />
+
+  fill: 数组替换全部值； 数组从指定开始位置到结束位置替换值<br />
+
+  entries\keys\values<br />
+  
+  includes<br />
+</body>
+<script>
+   {
+     // Array.of 将一组数据转换为一个数组
+     const a = Array.of(3,5,7,9)
+     console.log(a); // [3,5,7,9]
+     const empty = Array.of();
+     console.log('empty', empty) // []
+   }
+   console.log('*******分割线**********')
+   {
+     // Array.from 将伪数组或集合转换为数组
+     const a = new Set();
+     a.add(1);
+     a.add(2);
+     const arr = Array.from(a);
+     console.log(arr)
+
+     // Array.from 还有类似map的功能
+     const newArr = Array.from([1,2,3,4,5], function(item) {
+       return item * 2
+     })
+     console.log(newArr)
+   }
+   console.log('*******分割线**********')
+   {
+      // fill(a) 为将数组每项的内容替换为穿进去的值
+      const a = [1, 2, 3];
+      a.fill(22);
+      console.log(a)
+      // fill(data, firstPosition, lastPosition); 从起始位置到结束位置替换值
+      a.fill(4, 1, 2); 
+      console.log(a)
+   }
+
+   console.log('*******分割线**********')
+   {
+     const array = ['a','b', 'c', 'd'];
+     for (let index of array.keys()){
+       console.log('index', index)
+     }
+     // 此处的array.values方法可能会存在兼容问题， 有的浏览器不支持
+     for (let v of array.values()) {
+       console.log('value', v)
+     }
+     for (let [index, value] of array.entries()) {
+       console.log('index', index, 'value', value)
+     }
+   }
+   console.log('*******分割线**********')
+   {
+     // copyWithin, 复制值
+     console.log(['a', 'b', 'c', 'd', 'e'].copyWithin(0, 1, 4))
+   }
+</script>
+</html>

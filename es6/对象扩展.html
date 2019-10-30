@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>对象扩展</h2>
+    简介表示法 : 对象属性简写、对象属性方法简写
+    属性表达式
+    扩展运算符
+    Object新增方法
+</body>
+<script>
+  {
+    // 简洁表示法
+    const name = 'Tom';
+    const age = 25;
+    const es6Obj = {
+      name,
+      age
+    }
+
+    const es5 = {
+      hello: function(){
+        console.log('es5 method define')
+      }
+    }
+    // es6中方法简写
+    const es6 = {
+      hello(){
+        console.log('es6 method')
+      }
+    }
+  }
+
+  {
+    // 属性表达式
+    let a = 'a';
+    let es5 = {
+      a: 'c'
+    }
+    let es6 = {
+      [a]: 'c'
+    }
+  }
+
+  {
+    /*
+      新增API：
+      Object.is()， 在功能上等价于 ===
+      Object.assign, 浅拷贝(不会拷贝不可枚举的属性)， 深拷贝实现
+      Object.entries
+    */
+    console.log('字符串', Object.is('abc', 'abc'), 'abc' === 'abc');
+    console.log('数组', Object.is([], []), [] === []);
+    const d = {key: 123, v: 22};
+    for (let [key, v] of Object.entries(d)) {
+      console.log('key', key, 'value', v)
+    }
+  }
+
+  {
+    // 扩展运算符
+    const { a, b, ...c } = {a: '1', b: 'b',c :'c', d:'d'}
+    console.log(a,b,c)
+  }
+</script>
+</html>

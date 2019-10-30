@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>数值扩展， 新增特性</h2>
+    1.新增方法 <br />
+      Number.isFinite // 方法用来检测传入的参数是否是一个有穷数
+      Number.isNaN
+      Number.isInteger //  判断一个数值是否是整数
+      Number.isSafeInteger
+
+      Math.trunc() 方法会将数字的小数部分去掉，只保留整数部分
+      Math.sign(), 判断一个数是正数、负数还是0， 正数返回1，负数返回-1，0返回0， 字符串值不能转换为number的，则为NaN
+    2.方法调整 <br>
+    二进制、八进制
+</body>
+<script>
+  // 0b开始，表示二进制, b不区分大小写
+  console.log(0b11001)
+  // 0o表示八进制， o不区分大小写
+  console.log(0o767)
+
+  {
+    // 方法用来检测传入的参数是否是一个有穷数
+    console.log(Number.isFinite(15)) // true
+    console.log(Number.isFinite(NaN)) // false
+    console.log(Number.isNaN(NaN))
+  }
+  {
+    // 判断一个数值是否是整数
+    console.log(Number.isInteger(25));
+    console.log(25.2, Number.isInteger(25.2));
+    console.log(25.0, Number.isInteger(25.0));
+    console.log('sss',Number.isInteger('sss'))
+    // js数值范围两个端点值
+    console.log(Number.MAX_SAFE_INTEGER); // 2的53次方
+    console.log(Number.MIN_SAFE_INTEGER) // -2的53次放
+
+    // 判断一个数值是否在有效区间
+    console.log(Number.isSafeInteger(10));
+    console.log(Number.MAX_SAFE_INTEGER, 'Number.MAX_SAFE_INTEGER');
+  }
+  {
+    // 将数字的小数部分去掉，只保留整数部分
+    console.log('4.1', Math.trunc(4.1));
+  }
+  {
+    // 判断一个数是正数、负数、还是零
+    console.log(Math.sign(1)); // 1
+    console.log(Math.sign(-5)) // -1
+    console.log(Math.sign(0));
+    console.log(Math.sign('2')); // 此处会将字符串转换为Number，然后进行判断正负
+    console.log(Math.sign('sss')); // NaN
+  }
+  {
+    // 立方根
+    console.log(Math.cbrt(-1)); // -1
+    console.log(Math.cbrt(8)) // 2
+  }
+  // Math中也增加了三角函数方法
+</script>
+</html>

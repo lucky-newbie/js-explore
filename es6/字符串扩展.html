@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>字符串新增特性：</h2>
+  Unicode表示法 <br />
+  遍历接口<br />
+  模版字符串<br />
+  字符串对象新增语法（10种）<br />
+  startsWidth; 
+  endsWith; 
+  repeat; 
+  includes; 
+  padStart; 
+  padEnd
+  raw
+  标签模版字面量
+</body>
+<script>
+  /*
+    codePointAt();
+    String.fromCharCode(); // ES5中方法
+    String.fromCodePoint(''); // ES6方法
+  */
+  {
+    // unicode表示法
+    console.log('a', '\u0061');
+    console.log('s', '\u20BB7'); // 大于 0xFFFF 转换的二进制数据
+    // ES6中使用{},即可表示unicode
+    console.log('s', '\u{20BB7}') // 𠮷
+  }
+
+  {
+    const s = '𠮷'; // 
+    console.log('length', s.length) // length, 2
+
+    const s1 = '𠮷a';
+    console.log('s1.length:', s1.length);
+    console.log('code', s1.codePointAt(0));
+    console.log('codeo', s1.codePointAt(0).toString(16)); // 转换为16进制 
+  }
+
+  {
+    // 字符串遍历接口
+    const str = '\u{20bb7}abc';
+    for (let i = 0; i < str.length; i++) {
+      console.log('es5', str[i]);
+    }
+    console.log('*******分割线********')
+    // es6 通过for of 方式，遍历字符串
+    for (let code of str) {
+      console.log('es6', code)
+    }
+  }
+
+  {
+    let str = 'string';
+    // 判断是否包含某个字符串
+    console.log('includes:',str.includes('r'))
+    // 判断是否已某个字符为起始
+    console.log('startsWith', str.startsWith('str'));
+    // 判断是否已某个字符串为截止
+    console.log('endsWidth', str.endsWith('ing'))
+    // 让字符串进行叠加
+    console.log('repeat', str.repeat(2)); // stringstring
+  }
+
+  {
+    // 模版字符串
+    const name = 'Tom';
+    const info = 'Welcome';
+    const data = `${info}-${name}`;
+    console.log('data: ', data);
+
+  }
+
+  {
+    // 字符串补白操作
+    console.log('1'.padStart(2, '0')) // 01
+    console.log('1'.padEnd(2, '0')); // 10
+  }
+
+  {
+    // 标签模版
+    /*
+      应用场景：
+        a.字符串数值计算
+        b.过滤HTML字符串，防止XSS攻击
+    */
+    let user = {
+      name: 'List',
+      info: 'hello world'
+    };
+    function abc(s, v1, v2){
+      // s为：所有普通字符串组成的数组
+      console.log(s, v1, v2);
+      return s + v1 + v2
+    }
+    // 用于多语言转换； 处理XSS攻击
+    console.log(abc`iam${user.name},${user.info}`);
+    // 字符串数值计算：
+    function format(strings,...values){
+      return strings.reduce((s,v,idx)=>{
+          if(idx>0){
+              const prev=values[idx-1]
+              if(typeof prev==='number'){
+                  s+=`$${prev.toFixed(2)}`
+              }else{
+                  s+=prev
+              }
+          }
+          return s+v
+      },'')
+      }
+      const item='orange'
+      const price=3.5554
+      const text=format`the ${item}'s price is ${price}`
+      console.log(text)
+      // the orange's price is $3.56
+
+      // HTML字符串转换，防止XSS攻击示例
+
+      function filterSpitefulCode(strings,...values){
+        return strings.reduce((s,v,idx)=>{
+            if(idx>0){
+                const prev=values[idx-1].replace(/</g,"&lt;")
+                .replace(/>/g,"&gt;")
+                s+=prev
+            }
+            return s+v
+        },'')
+      }
+
+      const badCode= '<script>alert("abc")</cript>'
+      const message=filterSpitefulCode`<p>${badCode} has been transformed safely~`
+
+      console.log(message)
+      // <p>&lt;script&gt;alert("abc")&lt;/script&gt; has been transformed safely~
+  }
+
+  {
+    console.log(String.raw`Hi\n${2+3}!`)
+  }
+</script>
+</html>

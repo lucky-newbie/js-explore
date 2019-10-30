@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  ES6下，默认开启严格模式
+  <script>
+    // let
+    function test () {
+      for (let i = 0; i < 3; i++) {
+        // i的尽在当前块中有效
+        console.log(i)
+      }
+      // ES6 开启严格模式，所以会报错，ES5中会提示undefined
+      console.log(i) // Uncaught ReferenceError: i is not defined
+    }
+    test();
+
+    // const 基本数据类型不可修改，但定义的引用类型，可修改引用类型的值
+
+  </script>
+</body>
+</html>

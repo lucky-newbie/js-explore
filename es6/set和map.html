@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>set和map</h2>
+  Set(元素无重复，可作为数组使用)
+  WeakSet（Set的阉割版）
+  Map(与对象类似， 但不同的是，obj中的属性必须为字符串，但map的key可以为任意类型)
+  WeakMap
+</body>
+<script>
+  {
+    // set定义方式一
+    const list = new Set();
+    list.add(5);
+    list.add(7);
+    console.log('length', list.size); // 使用size属性获取set的长度
+    // set定义方式二
+    const arr = [1,2,3,4];
+    const set = new Set(arr); 
+    console.log('方式二创建set', set, set.size)
+  }
+  {
+    // set内元素不会有重复, 可以利用此特性进行数组去重, 但不会进行数据类型转换
+    const list = new Set();
+    list.add(1);
+    list.add(2);
+    list.add(1); // 此处不会被添加进去
+    console.log(list.size)
+
+    // 数组中数据类型2 为number，‘2’为字符串， 在set中不会进行数据类型转换，则会出现4个元素
+    const arr = [1,2,3,1,'2'];
+    const list2 = new Set(arr);
+    console.log(list2, Array.from(list2)); // [1,2,3,'2']
+  }
+  {
+    /*
+      Set方法
+      has 判断是否有某个元素
+      clear 清空
+      delete 删除某个数据
+      add 添加数据
+    */
+    const arr = ['add', 'has', 'clear', 'delete'];
+    const set = new Set(arr);
+    console.log('has ',set.has('add'))
+    console.log('delete', set.delete('add'), set)
+    console.log('clear', set.clear());
+  }
+  {
+    /*
+      set的遍历
+      for of
+      forEach
+    */
+    const arr = ['add', 'has', 'clear', 'delete'];
+    const set = new Set(arr);
+    for (let key of set.keys()){
+      console.log('key', key)
+    }
+    // set.values() 等价于 for (let v of set)
+    for (let v of set.values()){
+      console.log('value', v)
+    }
+    for (let [key, v] of set.entries()) {
+      console.log('key', key, v)
+    }
+
+    set.forEach(i => console.log(i))
+  }
+
+  console.log('******WeakSet分割线*********')
+  {
+    /*
+      WeakSet
+      1.与Set支持数据类型不同，weakset中元素只能是对象
+      2.WeakSet中的对象为弱引用，不会被垃圾回收机制回收
+      3.WeakSet中没有size属性, 没有clear方法， 不支持遍历
+    */
+   
+    const weakSet = new WeakSet();
+    const obj = {};
+    weakSet.add(obj);
+    console.log('weakSet',weakSet)
+  }
+  console.log('*******Map 分割线**********')
+  {
+    // 方式一
+    const map = new Map();
+    const arr = [1, 2, 3];
+    map.set(arr, 'sssss');
+    console.log('map', map) // 数组作为key
+    console.log('get', map.get(arr));
+
+    // 方式二
+    const map2 = new Map([ ['a', 'a'], ['b', 123] ])
+    console.log(map2);
+
+    /*
+      Map属性和方法：
+        map.size // 获取map长度
+        map.get(key)
+        map.set(key, v)
+        map.delete(key);
+        map.clear();
+        遍历与set相同
+    */
+  }
+  console.log('******WeakMap 分割线***********');
+
+  {
+    /*
+      weakmap与map的区别，与set weakmap类似
+      1.weakMap接收的key值必须为对象
+      2.WeakMap没有size属性，无clear方法， 不课遍历
+    */
+  }
+</script>
+</html>

@@ -15,7 +15,17 @@
   /*知识点
     XMLHttpRequest
     状态码说明
-    跨域
+    跨域（解决方式）
+      1、 通过jsonp跨域
+      2、 document.domain + iframe跨域
+      3、 location.hash + iframe
+      4、 window.name + iframe跨域
+      5、 postMessage跨域
+      6、 跨域资源共享（CORS）
+      7、 nginx代理跨域
+      8、 nodejs中间件代理跨域
+      9、 WebSocket协议跨域
+
   */
   
 
@@ -51,12 +61,43 @@
 </body>
 <script>
   /*
-    什么是跨域
+    1.什么是跨域
       浏览器有同源策略， 不允许访问ajax其他域接口
       跨域条件： 协议/端口/域名，有一个不同就算跨域
+      可跨域的三个标签：
+        <img src='XXX' />, 如果图片做了放盗链处理，会访问不到图片
+        <link href='xxx />
+        <script src='xxxx'>
+
+      三个标签的应用场景：
+        <img> 用于打点统计,统计信息、log，统计网站可能是其他域（兼容所有浏览器）
+        <link><script>可以使用cdn， cdn可能是其他域
+        <script>可以用于JSONP，解决跨域
+
+      跨域注意事项：
+          所有的跨域请求必须经过信息提供方提供允许
+          如果未经允许即可获取，那是浏览器出现同源策略问题
+
+    2.JSONP（前端设置）
+      // window.callback = function(data) {
+      //   console.log(data)
+      // }
+      // // <script src='跨域地址，服务器会返回定义好的方法callback给前端,前端兼听监听callback方法获取数据'><scirpt>   
       
-    JSONP（前端设置）
-    服务端设置（http header）
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+
+      // 传参并指定回调执行函数为onBack
+      script.src = 'http://www.domain2.com:8080/login?user=admin&callback=onBack';
+      document.head.appendChild(script);
+
+      // 回调执行函数
+      function onBack(res) {
+          alert(JSON.stringify(res));
+      }
+
+
+    3.服务端设置（http header）
   */
 
 

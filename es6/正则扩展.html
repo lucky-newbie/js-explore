@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+  // 正则新增特性：
+  /*
+    构造函数的变化    正则方法的扩展  u修饰符
+      y修饰符         s修饰符
+  */
+  {
+    // es5创建正则表达式两种方式
+    const reg1 = new RegExp('xyz', 'i');
+    const reg2 = new RegExp(/xyz/i);
+    console.log(reg1.test('xyz123'), reg2.test('xyz')) // true, true
+
+    // es6, 创建正则表达式时，如果在正则表达式方式创建，传第二个参数，则第二个参数会覆盖第一个参数中的修饰符
+    const reg3 = new RegExp(/xyz/ig, 'i');
+    console.log(reg3.flags); // i
+  }
+  {
+    // g修饰符和y修饰符都是全局匹配，
+    // g修饰符为找到匹配第一个之后， 在后面开始查找，是否有匹配成功的
+    // 但y修饰符为匹配到第一个之后，从匹配成功的下一个开始
+    const s = 'bbb_bb_b';
+    let reg1 = /b+/g;
+    let reg2 = /b+/y;
+    console.log('/b+/g', reg1.exec(s), '/b+/y', reg2.exec(s));
+    console.log('/b+/g', reg1.exec(s), '/b+/y', reg2.exec(s));
+    // es6中增加sticky属性，判断是否使用y修饰符
+    console.log(reg1.sticky, reg2.sticky)
+  }
+
+  {
+    // u修饰符， 用来匹配uinicode编码的字符
+    // 如果处理的正则表达式中字节大于2个字节，则使用u修饰符
+    // ES5中的“.”字符只有在小于两个字节时，才会匹配所有的，大于两个字节，则需要添加u修饰符
+
+  }
+</script>
+<body>
+  正则扩展
+</body>
+</html>

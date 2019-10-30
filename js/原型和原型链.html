@@ -6,6 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+<style>
+  .outer{
+    width: 200px;
+    height: 100px;
+  }
+  .inner{
+    width: 60px;
+    height: 60px;
+    padding-top: 20%
+  }
+</style>
 <script>
 
   // 如何判断一个变量是否是数组对象
@@ -97,6 +108,9 @@
 </script>
 <body>
   <div id ='id'>ssdsadasdasdasd</div>
+  <div class='outer'>
+    <div class='inner'></div>
+  </div>
 </body>
 <script>
     // 原型链继承的例子
@@ -117,5 +131,22 @@
     var dom = new Elem('id');
     dom.html('tttttt').on('click', function(){alert(1)})
   
+  </script>
+  <script>
+    var number = 10;
+    function fn() {
+      console.log('this', this)
+      console.log(this.number);
+    }
+    var obj = {
+      number: 2,
+      show: function(fn) {
+        this.number = 3;
+        fn();
+        console.log(arguments[0])
+        arguments[0]()
+      }
+    }
+    obj.show(fn); // 10 undefined
   </script>
 </html>

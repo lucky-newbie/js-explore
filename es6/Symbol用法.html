@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Symbol</h2>
+  Symbol的概念： 用来提供一个独一无二的值。
+  Symbol的作用：
+</body>
+<script>
+  {
+    // Symbol声明方式一
+    const a1 = Symbol();
+    const a2 = Symbol();
+    console.log(a1, a2, a1 === a2)
+    // 声明方式二
+    const a3 = Symbol.for('a3'); // 创建已a3为key的symbol，如果有则不创建，如果没有则创建
+    const a4 = Symbol.for('a3')
+    console.log(a3, a3 === a4); // true， 已经创建过以a3为key的值了，所以不会在次创建，直接拿过来用
+  }
+
+  {
+    /*
+      Symbol作用：
+        1.创建不可修改的对象属性, 注意： 使用Symbol作为key值，则for in、for of 无法拿到
+    */
+    const a1 = Symbol.for('abc');
+    const obj = {
+      [a1]: '123',
+      'abc': '345',
+      'c': '456'
+    }
+    console.log('symbol obj', obj)
+    
+    // 注意： 使用Symbol作为key值，则for in、for of 无法拿到
+    console.log('使用Symbol作为key值，则for in、for of 无法拿到')
+    for (let [key, v] of Object.entries(obj)) {
+      console.log('key', key, v)
+    } // 只能输出 ‘abc': 345, c: 456
+    
+    for (let attr in obj) {
+      console.log('attr', attr)
+    } // 只能输出 abc: 345, c:456
+
+    // 获取Symbol属性，则使用Object.getOwnPropertySymbols(obj)获取
+    console.log('获取Symbol属性，则使用Object.getOwnPropertySymbols(obj)获取')
+    const syms = Object.getOwnPropertySymbols(obj);
+    syms.forEach(i => console.log(i, obj[i]))
+
+    // 使用Reflect.ownKeys(obj)方法， 获取对象中所有属性， 包括Symbol作为属性的值
+    console.log(' 使用Reflect.ownKeys(obj)方法， 获取对象中所有属性， 包括Symbol作为属性的值')
+    const all = Reflect.ownKeys(obj);
+    all.forEach(i => console.log(i))
+  }
+</script>
+</html>
