@@ -5,7 +5,7 @@
   * 服务器发送完毕，就关闭TCP连接
 
   ## HTTP1.0
-  * 增加了很多命令，如post put、header等
+  * 增加三个方法，如post put、header
   * 增加了状态码和header数据描述
   * 多字符集支持，多部分发送、权限、缓存等
     
