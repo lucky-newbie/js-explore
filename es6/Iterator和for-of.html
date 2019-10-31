@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Iterator</h2>
+  iterator基本用法
+  for of 用法
+</body>
+<script>
+  {
+    const array = ['hello', 'world'];
+    const map = array[Symbol.iterator](); // 得到iterator对象
+    console.log(map.next())
+    console.log(map.next())
+    console.log(map.next())
+    /*********************/
+    // 实现对象的Iterator接口, 实现的效果， 先将start中数值遍历完成，在遍历end中数值
+    const obj = {
+      start: [1,2,3],
+      end: [4,5,6,7],
+      [Symbol.iterator]() {
+        let index = 0;
+        const self = this;
+        const total = self.start.concat(self.end);
+        const length = total.length;
+        return {
+          next() {
+            if (index < length) {
+              // 返回当前值，并将index ++
+              return {
+                value: total[index++],
+                done: false
+              }
+            } else {
+              return {
+                value: total[index++],
+                done: true
+              }
+            }
+          }
+        }
+      }
+    }
+    for(let v of obj) {
+      console.log('value', v)
+    }
+
+    // 总结：
+    /*
+      总结：使用for of的前提， 是对象实现了Iterator接口
+      定义Iterator接口要点：
+        1.定义方法： [Symbol.itertor](){}
+        2.返回一个对象， 对象中一定要包含next方法，如：{next() {}}
+        3.next方法一定要返回对象，对象中一定要包含两个属性， 一个是value， 一个是done
+    */
+  }
+</script>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Map Set 数组 对象</h2>
+</body>
+<script>
+  {
+    // 数据解构对比： 增删改查
+    const map = new Map();
+    const array = [];
+    // 增加
+    map.set('key', 1);
+    array.push({key: 1})
+    console.log('map-array', map, array)
+
+    // 查询
+    const map_exist = map.has('key');
+    const array_exist = array.find(i => i.key)
+    console.log('查询', map_exist, array_exist)
+    // 修改
+    map.set('key', 2);
+    array.forEach(i => {
+      if (i.key) {
+        i.key = 2
+      }
+    })
+    console.log('修改', map, array);
+    // 删除
+    map.delete('key');
+    const index = array.findIndex(i => {
+      if (i.key) {
+        return i
+      }
+    })
+    array.splice(index, 1); // 数组删除/添加元素
+  }
+  console.log('********Set 和 数组分割线***********')
+  {
+    const set = new Set();
+    const array = [];
+    // 增加
+    set.add({key: 1});
+    array.push({key: 1});
+    console.log('增加', set, array)
+
+    // 查询
+    const set_exist = set.has({key: 1});
+    const array_exist = array.finnd(i => i.key);
+    console.log('set - array 查询', set_exist, array_exist)
+    
+    // 修改
+    set.forEach(i => i.key ? i.key = 2 : '');
+    array.forEach(i => i.key ? i.key = 2 : '');
+    console.log('修改', set, array);
+
+    // 删除
+    set.forEach(i => i.key ? set.delete(i) : '');
+    const index = array.findIndex(i => i.key);
+    array.splice(index, 1);
+    console.log('删除', set, array)
+  }
+  console.log('*********Set 与 Map 与 Object 分割线**************')
+  {
+    const item = {key: 1};
+    const map = new Map();
+    const set = new Set();
+    const obj = {};
+
+    // 增加
+    map.set('key', 1);
+    set.add(item);
+    obj['t'] = 1;
+    console.log(map, set, obj)
+
+    // 查询
+    const info = {
+      map: map.has('key'),
+      set: set.has(item),
+      obj: 't' in obj
+    }
+    console.log(info)
+
+    // 修改；
+    map.set('key', 2);
+    item.key = 2;
+    obj['t'] = 2;
+    console.log(map, set, obj);
+
+    // 删除
+    map.delete('key');
+    set.delete(item);
+    delete obj['t'];
+    console.log(map, set, obj);
+  }
+
+
+</script>
+</html>

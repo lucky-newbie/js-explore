@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Proxy Reflect</h2>
+  Proxy适用场景
+    proxy 提供13中方法操作对象
+  Reflect适用场景
+</body>
+<script>
+  {
+    // 预定义原始数据对象
+    const obj = {
+      time: '2017-08-08',
+      name: 'net',
+      _r: 123
+    }
+    // 创建代理商, proxy 提供13中方法操作对象
+    const monitor = new Proxy(obj, {
+      // 拦截对象属性的读取
+      get(target, key) {
+        console.log('target', target, 'key', key);
+        return target[key].replace('2017', '2018')
+      },
+      // 设置属性操作
+      set(target, key, value) {
+        if (key === 'name') {
+          return target[key] = value;
+        } else {
+          return target[key]
+        }
+      },
+      // 拦截key in object 操作
+      has(target, key) {
+        if (key === 'name') {
+          return target[key]
+        } else {
+          return false
+        }
+      },
+      // 拦截proxy
+      deleteProperty(target, key) {
+        if (key.indexOf('-') > -1) {
+          delete target[key]
+          return true
+        } else {
+          return target[key]
+        }
+      },
+      // 拦截Object.keys/ Object.getOwnPropertySymbols/Objectg.etOwnPropertyNames方法
+      ownKeys(target) {
+        return Object.keys(target).filter(key => key !== 'name')
+      }
+    });
+    console.log(monitor.time);
+    monitor.time = 2019
+    console.log(monitor.time)
+
+    console.log(Object.keys(monitor))
+    // 用户层面，则访问monitor对象
+  }
+  {
+    // Reflect, 与Proxy类似,Proxy有的方法，Reflect都存在
+    const obj = {
+      time: '2018-08-20',
+      name: 'Reflect',
+      _r: '123'
+    };
+    const t = Reflect.get(obj, 'time')
+    console.log(t)
+  }
+  {
+    /*
+      应用场景
+        1.对数据进行校验时,与业务进行解藕, 如以下示例额，添加校验
+    */
+
+    function validator(target, validator) {
+      return new Proxy(target, {
+        _validator: validator,
+        set(target, key, value, proxy) {
+          if (target.hasOwnProperty(key)) {
+            const validate = this._validator[key];
+            if (!!validate(value)) {
+              return Reflect.set(target, key, value, proxy)
+            } else {
+              throw Error(`不能设置${key}到${value}`)
+            }
+          } else {
+            throw Error(`${key}不存在`)
+          }
+        }
+      })
+    }
+
+    const personValidator = {
+      name(value) {
+        return typeof value === 'string'
+      },
+      age(val){
+        return typeof val === 'number' && val > 18;
+      }
+    }
+
+    class Person{
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+        return validator(this, personValidator)
+      }
+    }
+
+    const person = new Person('Tom', 30);
+    console.log(person);
+    person.name = 123
+  }
+</script>
+</html>

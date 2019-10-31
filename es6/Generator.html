@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>
+    Generator
+  </h2>
+  基本概念: 异步编程的解决方案
+  next函数的用法
+  yield* 的用法
+
+  应用场景： 1.抽奖剩余次数；2.长轮询
+</body>
+<script>
+
+  {
+    //  generator返回的就是一个iterator 
+    const tell = function* () {
+      yield 'a';
+      yield 'b';
+      return 'c';
+    }
+    const r = tell();
+    console.log(r.next()); // { value: 'a', done: false}
+    console.log(r.next()); // {value: 'b', done: false}
+    console.log(r.next()); // {value: 'c', done: true}
+  }
+
+  {
+    // 任何一个iterator接口都是定义在Symbol.iterator上
+    // 使用generator作为遍历的结果, 实现for（v  of obj）
+    const obj = {};
+    obj[Symbol.iterator] = function* () {
+      yield '1';
+      yield '2';
+      return '3'
+    }
+    for (let v of obj) {
+      console.log('value', v)
+    }
+  }
+  {
+    /*
+      generator的优势
+      状态机
+    */
+    const state = function* () {
+      while(1) {
+        yield 'A';
+        yield 'B';
+        yield 'C';
+      }
+    }
+    const status = state();
+    console.log(status.next())
+    console.log(status.next())
+    console.log(status.next())
+    console.log(status.next())
+
+    // async await语法糖
+  }
+  {
+    /*
+      generator 应用场景
+      示例一： 抽奖， 通过generator来处理剩余抽奖次数
+    */
+
+    function draw(count) {
+      // 抽奖逻辑
+      console.log(`剩余抽奖次数为：${count}`)
+    }
+
+    // 根据抽奖次数执行抽奖
+    const residue = function* (count) {
+      while(count > 0) {
+        count --;
+        yield draw(count);
+      }
+      console.log('抽奖次数为0，不可抽奖')
+    }
+
+    const start = residue(5);
+    const btn = document.createElement('button');
+    btn.id = 'start';
+    btn.textContent = '抽奖';
+    document.body.appendChild(btn);
+    document.getElementById('start').addEventListener('click', function() {
+      start.next()
+    }, false);
+
+
+
+    /*
+      应用场景二： 长轮训， 使用generator将长轮询变的优雅些
+    */
+
+    // 模拟ajax, 发送请求
+    const ajax = function* () {
+      yield new Promise((resolve, reject) => {
+        // 模拟异步请求，定义后端返回值
+        setTimeout(function(){
+          resolve({code: 10})
+        }, 1000)
+      })
+    }
+
+    const pull = function() {
+      const generator = ajax();
+      const step = generator.next(); // 返回{value: promise, done: true}
+      console.log('step', step)
+      step.value.then(function(data) {
+        if (data.code != 0) {
+          // 模拟异步请求，发送ajax请求
+          setTimeout(function() {
+            console.log('wait')
+            pull();
+          }, 1000)
+        } else {
+          console.log('轮询结束')
+        }
+      })
+    }
+
+    pull()
+  }
+
+</script>
+</html>

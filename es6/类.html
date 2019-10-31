@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>类</h2>
+   基本语法
+   类的继承
+   静态方法
+   静态属性
+   getter
+   setter
+
+
+   super可作为函数和对象使用两种方式，参考https://www.cnblogs.com/thomas-yang-github/p/11621067.html
+</body>
+<script>
+  {
+    /*
+      基本定义和生成实例
+    */
+    class Parent{
+      constructor(name='aaa'){
+        this.name=name;
+      }
+    }
+
+    const p = new Parent('Tom');
+    console.log(p)
+  }
+  {
+    /*
+      继承
+    */
+    class Parent{
+      constructor(name = 'xxx') {
+        this.name = name
+      }
+    }
+
+    class Child extends Parent{
+    }
+    console.log(new Child())
+  }
+  console.log('****继承传递参数*******')
+  {
+    /*
+      继承，子类重写父类参数
+    */
+    class Parent{
+      constructor(name = 'xxx') {
+        this.name = name
+      }
+    }
+
+    class Child extends Parent{
+      constructor(name='child') {
+        // super需放到第一行
+        /*
+          在 constructor 中必须调用 super 方法，因为子类没有自己的 this 对象，
+          而是继承父类的 this 对象，然后对其进行加工,而 super 就代表了父类的构造函数。
+          super 虽然代表了父类 A 的构造函数，但是返回的是子类 B 的实例，
+          即 super 内部的 this 指的是 B，因此 super() 在这里相当于
+          ```A.prototype.constructor.call(this, props)``
+        
+        */
+        super(name) // 此处super中的参数列表，即为父类构造函数的参数列表
+        this.type = 'xxxx';
+      }
+    }
+    console.log(new Child(123))
+  }
+
+  console.log('*****分割线*******')
+  {
+    class Parent{
+      constructor(name = 'xxx') {
+        this.name = name
+      }
+
+      // 此处为属性，并不是方法
+      get longName() {
+        return this.name;
+      }
+      set longName(value) {
+        this.name = value
+      }
+    }
+    const p = new Parent();
+    console.log(p.longName)
+    p.longName = 'bbbbb';
+    console.log(p.longName)
+
+    class Child extends Parent{
+      constructor(name='child') {
+        // super需放到第一行
+        super(name) // 此处super中的参数列表，即为父类构造函数的参数列表
+        this.type = 'xxxx';
+      }
+    }
+
+    // 继承时，如果父类中存在getter，没有setter，在子类中定义setter，子类并不会会存在getter
+  }
+  {
+    // 静态方法
+    class Parent{
+      constructor(name = 'xssssxx') {
+        this.name = name
+      }
+      // 定义静态方法
+      static showName () {
+        console.log(11,this.name)
+      }
+    }
+    Parent.showName()
+  }
+
+  {
+    // 静态属性
+    class Parent {
+      constructor(name){
+        this.name = name
+      }
+    }
+    Parent.type ='静态属性'//  直接在类上添加属性，则这个属性就是静态属性
+  }
+</script>
+<script>
+
+  // 测试继承内容
+  class Parent1 {
+    constructor(name = 'hhh') {
+      this.name = name;
+    }
+
+    // 通过static定义静态方法
+    static tell () {
+      console.log(this.name, '静态方法')
+    }
+
+    // 通过get关键字定义getter方法，此处并不是方法，而是一个属性
+    get showName() {
+      return this.name
+    }
+
+    
+  }
+
+  Parent1.type = '静态属性'
+  console.log(Parent1.tell());
+  const p = new Parent1('哈哈哈');
+  console.log(p.showName)
+  p.showName = '呃呃呃呃'
+  console.log(p.showName)
+
+
+  class Child extends Parent1 {
+    constructor() {
+      super(); // ES6 要求构造函数必须执行一次super， 要不会报错
+    }
+
+    // 通过set关键字定义setter方法， 也仅是一个属性
+    set showName(name) {
+      this.name = name
+    }
+  }
+  const child = new Child();
+  console.log(child, child.showName)
+  child.showName = 123213;
+  console.log(child)
+  console.log(Child.type)
+  console.log(Child.tell())
+</script>
+</html>
