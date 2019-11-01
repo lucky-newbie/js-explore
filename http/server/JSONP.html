@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  JSONP跨域测试
+</body>
+
+<script>
+  // 动态创建script标签， 服务端截获接口，返回对应函数及数据
+  const dom = document.createElement('script');
+  dom.src = 'http://localhost:3003/jsonp?callback=fun';
+  document.body.append(dom);
+
+
+  function fun(data) {
+    console.log('这是服务器返回的数据')
+    console.log('data', data)
+  }
+</script>
+</html>
