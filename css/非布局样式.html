@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <pre>
+    字体、字重、颜色、大小、行高
+    背景、边框
+    滚动、换行
+    粗体、斜体、下划线
+    其他
+  </pre>
+  <h2>字体族分类:</h2>
+  <pre>
+    1.serif(趁线字体)
+    2.sans-serif(非趁线字体)
+    3.monospace(等宽字体)
+    4.cursive(手写体)
+    5.fantasy(花体)
+  </pre>
+  多字体fallback(用于多平台字体适配)
+  网络字体、自定义字体
+  iconfont
+  <hr/>
+  <h2>行高</h2>
+  <pre>
+    行高的构成
+      行内元素的行高由该行所有行内元素最大的行高确定(该行所有的行内元素会形成一个linebox， 高度由line-height决定)
+      文字的排版：底线(bottom)、顶线（top）、基线（baseline）， 默认所有的文字按照基线排版, 顶线不一定是文字显示最上方
+    行高相关的现象和方案， 示例如下：
+      
+      原因：img会作为行内元素排版， 默认按照文字的基线排版，与文字在一起，图片的基线距离底线还有一定的距离
+           所以会有空隙,空隙大小会根据字体大小而定，字体如果12px，则空隙约3px左右。
+      解决方式： img 设置vertical-align: bottom, 采用底线排列，即可消除间隙；或设置为block类型
+    行高的调整
+      
+  </pre>
+  <style>
+    
+  
+  </style>
+  <div>
+      <span>文字</span>
+      <img src='http://pic27.nipic.com/20130313/9252150_092049419327_2.jpg' />
+    </div>
+</body>
+</html>

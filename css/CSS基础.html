@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=<h>, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+
+  /*
+   浏览器解析查找选择器为从右向左方向开始找, 加快浏览器对css解析速度
+  */
+  .body div .hello{
+    color: red;
+  }
+</style>
+<body class='body'>
+  <h2>css: Cascading style sheet</h2>
+  选择器{
+    属性：值；
+    属性：值;
+  }
+  <h2>选择器的分类和权重</h2>
+  id选择器： 100
+  类、属性、伪类选择器： 10
+  元素、伪元素： 1
+  其他选择器： 0
+
+
+  !important优先级最高
+  元素属性，优先级高
+  相同权重， 后写的生效
+  <pre>
+    元素选择器： a{}
+    伪元素选择器： ::before{} 
+    类选择器： .class{} 
+    属性选择器：  input[type=radio]{},
+    伪类选择器： :hover{}  区别： 伪元素是真是存在的元素，伪类是一个元素的状态
+    id选择器： #id{} 
+    组合选择器： [type=radio] + lable{}
+    否定选择器： :not(.link){}
+    通用选择器： *{}
+  </pre>
+  <h2>选择器的解析和性能</h2>
+  <div>
+    <a class='hello'>
+        浏览器解析查找选择器为从右向左方向开始找
+    </a>
+  </div>
+  <h2>值得关注的选择器</h2>
+    
+</body>
+</html>

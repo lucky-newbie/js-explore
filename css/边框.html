@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  .c1{
+    width: 400px;
+    height: 200px;
+    border: 1px solid red;
+  }
+  /*边框图片*/
+  .c2{
+    width: 400px;
+    height: 200px;
+    border: 30px solid transparent;
+     /* css3 */
+    border-image: url('http://pic27.nipic.com/20130313/9252150_092049419327_2.jpg') 30 repeat;
+  }
+
+  .c3{
+    width: 0px;
+    height: 200px;
+    border-bottom: 30px solid red;
+    border-right: 30px solid transparent;
+    border-left: 30px solid transparent;
+    /* border-radius: 30px; */
+  }
+</style>
+<body>
+  <h2>边框</h2>
+  边框属性： 线性、大小、颜色 c1
+  边框背景图 c2
+  边框衔接（三角形）
+  <hr>
+  <div class='c1'></div>
+  <div class='c2'></div>
+  <div class='c3'></div>
+</body>
+</html>
