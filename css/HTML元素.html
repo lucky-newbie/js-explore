@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>元素分类</h2>
+  
+  按照默认样式分类：
+  <pre>
+  块级元素block： 
+    1.默认会占据整行，是一个方块形状， 2.高度，行高，外边距和内边距都可以单独设置，3.如果不设置宽度，那么宽度将默认变为父级的100%。
+  行内元素inline：
+    1.不会占据整行，2.不能设置宽高，默认的宽度就是文字的宽度，3.高度和宽度无效，但是水平方向上的padding和margin可以设置，垂直方向上的无效,4.形状不固定
+  内联块级元素inline-block: 
+    1.高度，行高，内边距和外边距都可以设置;2.默认的宽度就是本身内容的宽度;3.和相邻的行内元素（行内块）在一行上，但是中间会有空白的间隙
+  </pre> 
+  h5中按内容类型区分
+  <pre>
+    flow
+    heading h1-h6
+    metadata: meta/link/script/base
+    sectioning:
+    interactive: a/audio/button
+    embedded: audio/img
+    phrasing: 
+  </pre>
+  <h2>HTML元素嵌套关系</h2>
+  1.块级元素可以包含行内元素
+  2.块级元素不一定能包含块级元素， 比如p中不能包含div
+  3.行内元素一般不能包含块级元素(比如a元素可以包含块级元素, a包含div元素)
+  <br />
+  <h2>默认样式</h2>
+  <pre>
+  css reset
+  方式一： 如yui的css reset(html标签都归零)
+  （简写方式： *{margin:0; paddding: 0})
+  方式二： normalize.css 
+  </pre>
+
+  <h2>模拟面试题</h2>
+  <pre>
+
+    1.doctype的意义是什么:
+      浏览器以标准模式渲染；让浏览器知道元素的合法性；
+    2 html xhtml html5的关系
+      HTML基于SGML
+      XHTML属于XML，是HTML进行XML严格化的结果
+      HTML5
+    3.HTML5有什么变化
+      1.新的语义话
+      2.表单增强
+      3.新的API（离线service、音视频、canvas、实时通信websocket、本地存储localstorage、设备能力）
+      4.分类和嵌套变更， 比如a标签嵌套div在之前html版本中不合法，但在html5中变成合法的
+    4.em和i有啥区别
+      em是语义化的标签，表强调， i是纯样式的标签，表斜体，已废除
+      i用来表示字体图标
+    5.语义化的意义是什么：
+      开发者容易理解
+      机器容易理解解构（搜索、读屏幕软件）
+      有助于SEO
+      semantic microdata规范
+      
+    6.html元素哪些可以自闭合
+      表单元素input
+      图片img
+      br、hr 
+      meta、link 
+    7.HTML和DOM的关系
+      DOM由HTML解析出来的， JS维护DOM
+    8.property和attribute的区别
+      property是DOM对象的属性
+      attribute是html标签的特性
+    9.form的作用有啥？
+      直接提交表单
+      使用submit/reset按钮
+      便于浏览器保存表单
+      第三方库可以整体提取值
+      第三方库可以进行表单验证
+  </pre>
+</body>
+</html>
