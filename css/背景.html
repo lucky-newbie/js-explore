@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /*背景色方式*/
+    .c1{
+      width: 200px;
+      height: 200px;
+      background: red; /*颜色单词*/
+      background: #ff0000; /*16进制表示*/
+      background: hsl(0, 100%, 50%); /*色相， 三个参数： 第一个：颜色（0-360）， 第二个参数：饱和度（0-100%）， 第三个参数：亮度（0-100%）， */
+      background: hsla(0, 100%, 50%, 0.3); /* 基于色相方式，增加透明度*/
+      background: rgb(red, green, blue);
+      background: rgba(red, green, blue, 0.3);
+    }
+    /*线性渐变*/
+    .c2{
+      width: 200px;
+      height: 200px;
+      /*方向*/
+      background: linear-gradientt(to right, red, green);
+      /*角度*/
+      background: linear-gradient(45deg, red, green);
+      /*角度 多颜色*/
+      background: linear-gradient(90deg, red 0, green 10%, yellow 100%);
+    }
+    /*通过多背景色， 设置网格线、虚线*/
+    .c3{
+      height: 90px;
+     
+      background: linear-gradient(45deg, transparent 0, transparent 49%, red 49%, red 50%, transparent 50%, transparent 100%),
+                  linear-gradient(135deg, transparent 0, transparent 49%, green 49%, green 50%, transparent 50%, transparent 100%);
+      background-size: 30px 30px; /*线性渐变也可理解为图片，可使用background-size，大小需判断好，保证显示的时候可以显示有色区域*/
+    }
+    .c4{
+      height: 200px;
+      background-image: url('https://ss3.baidu.com/-rVXeDTa2gU2pMbgoY3K///it///u=4121232426,1436481329&fm=202&src=ry_add_wise');
+      background-position: center center; /* 指定背景图片位置 */
+      background-size: 40px 40px; /* 指定背景图大小 */
+      background-repeat: no-repeat;
+    }
+
+  </style>
+</head>
+<body>
+  <h2>背景颜色</h2>
+  <div class='c1'></div>
+  <h2>渐变色背景（css3）</h2>
+  <div class='c2'></div>
+  <h2>多背景叠加（css3）</h2>
+  <div class='c3'></div>
+  <h2>图片作为背景图片和属性，应用如:雪碧图</h2>
+  <div class='c4'></div>
+    通过background-position属性来调整图片位置
+    通过修改background-size属性，去适配不同分辨率的屏幕
+  <h2>base64和性能优化</h2>
+    劣势：
+    1.图片转化为base64后，体积一般会增大三分之一；图片转化为base64，会放到html或css中，会增大体积
+    2.会增加解码时间（一般仅将小图标转化成base64）
+    <br />
+    优势：节省http连接数
+    一般通过构建工具，将图片转换为base64
+  <h2>多分辨率适配（pc/移动端）</h2>
+    通过background-size属性修改图片大小，来适配不同分辨率屏幕
+
+</body>
+</html>

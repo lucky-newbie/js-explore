@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  
+    .p1{
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+
+    .p2{
+      width: 200px;
+      height: 200px;
+      background-color: green;
+      position: relative;
+      top: 10px;
+    }
+    .p3{
+      width: 200px;
+      height: 200px;
+      background-color: green;
+      position: absolute;
+      top: 10px;
+      left: 30px;
+    }
+    .p3-3{
+      width: 200px;
+      height: 100px;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      background-color: purple
+    }
+    .p4{
+      width: 200px; 
+      height: 200px;
+      position: fixed;
+      background-color: yellow;
+      left: 20px;
+      bottom: 0px;
+    }
+    .p5{
+      width: 200px;
+      height: 200px;
+      background-color: blue;
+    }
+
+  </style>
+</head>
+<body>
+  <h2>盒模型</h2>
+  content
+  padding
+  border
+  margin
+  <hr>
+  内容的宽度/高度只对内容生效（content）
+  获取占用空间大小： content + padding + border
+  <hr>
+  <h2>display/position</h2>
+  display: block/inline/inline-block;
+  position: static/relative/absolute/fixed;
+  <hr>
+  <div class='p1'>
+    static: 默认
+  </div>
+  <div class='p2'>
+    relative： 偏移相对与元素本身, 偏移后不会改变所占据的空间
+  </div>
+  <div class='p3'>
+    absolute： 脱离文档流,不会影响其他元素布局， 相对于最近的父级
+    relative/absolute进行定位， 如果找不到就一直网上找，直到找到body
+    <div class='p3-3'>
+    </div>
+  </div>
+  <div class='p4'>
+    fixed： 脱离文档流， 相当于屏幕可视区域进行变动 ,不会影响其他元素布局
+  </div>
+  <div class='p5'>
+    正常内容, 定位为： relative/absolute/fixed时，可以设置z-index
+  </div>
+</body>
+</html>

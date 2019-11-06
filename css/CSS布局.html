@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>布局</h2>
+  table布局
+  技巧性布局
+  flex/grid布局
+  响应式布局
+  <h2>常用布局方式</h2>
+  table布局
+  float浮动+ margin
+  inline-block布局
+  flexbox布局（正统方式）
+  <hr>
+  <h2>布局可能面试题</h2>
+  a.实现两栏或三栏布局： 
+    1.表格布局
+    2.float+margin布局
+    3.inline-block布局（注意其中存在间隙）
+    4.flex布局
+    5.绝对定位布局
+  b.position 中absolute和fixed区别
+    1.参照物不同
+    absolute相对最近的absolute或relative的父级
+    fixed相对于屏幕（viewport）
+  c.display： inline-block为什么会有间隙
+    原因： 字符间距
+    解决方式：1.消灭字符（父级font-size：0， 子级在修改font-size）；2.消灭间距，去掉空白区域
+  d.清楚浮动的方式,以及为什么要清除浮动
+    原因：父级不会计算浮动的高度，如果不清除浮动，可能会导致内容超出父级。
+    1.父级设置overflow：auto/hidden
+    2.通过伪元素方式添加clear：both 清除浮动
+  e.如何适配移动端页面？
+    1.设置viewport
+    2.通过rem/viewport/媒体查询 
+    3.设计层面上：移动端某些可隐藏、折行、自适应
+  
+</body>
+</html>

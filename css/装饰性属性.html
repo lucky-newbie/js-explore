@@ -11,6 +11,21 @@
     font-weight: normal; /* 默认400*/
     font-weight: bold; /* 默认700*/
   }
+  
+  .checkbox{
+
+  }
+  input[type=checkbox] {
+    display: none
+  }
+  .label{
+    background: url('https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4226865147,1664072825&fm=26&gp=0.jpg') left center no-repeat;
+    background-size: 10px 20px;
+    padding-left: 12px;
+  }
+  input:checked + .label{
+    background-image: url('https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3557074966,3716449675&fm=26&gp=0.jpg')
+  }
 </style>
 <body>
   <h2>装饰性属性</h2>
@@ -20,6 +35,36 @@
   指针： cursor
   <hr>
   <div class='c1'></div>
-  
+  <hr>
+  <h2>checkbox美化案例</h2>
+  <div class='checkbox'>
+    <input type='checkbox' id='checkbox' />
+    <label class='label' for='checkbox'>美化的checkbox</label>
+  </div>
+
+  <h2>css面试预测</h2>
+  css选择器优先级
+  计算权重
+  ！important 最优先
+  内连样式
+  权重相同时，后写的优先级高
+  <h2>雪碧图的作用</h2>
+    减少http请求数，提高加载性能
+    有些情况下可以减少图片大小
+  <h2>自定义字体的使用场景</h2>
+    1.作为字体使用，写文案、banner之类的
+    2.作为字体图标使用
+  <h2>base64的使用</h2>
+    1.减少http请求
+    2.适用小图片
+    3.base64体积会变大
+  <h2>伪元素和伪类</h2>
+    1.伪类表状态
+    2.伪元素是真的有元素
+    3.伪类使用为单冒号， 伪元素使用双冒号（但之前浏览器兼容的场景下，也有单冒号）
+  <h2>美化checkbox</h2>
+    1.通过label（for=checkboxid），为label设置背景图，显示未选中时样式
+    2.隐藏原生checkbox
+    3.通过:checked + label 去修改label选中的样式
 </body>
 </html>

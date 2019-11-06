@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    
+    .container{
+      width: 800px;
+      height: 200px;
+      font-size: 0px;
+    }
+    .left{
+      font-size: 12px;
+      width: 200px;
+      height: 200px;
+      display: inline-block;
+      background-color: red;
+    }
+    .right{
+      font-size: 12px;
+      width: 600px;
+      height: 200px;
+      display: inline-block;
+      background-color: green;
+    }
+    
+  </style>
+</head>
+<body>
+  <h2>inline-block布局</h2>
+  1.像文本一样排block元素
+  2.没有清除浮动问题;
+  3.需要处理间隙问题
+  4.不好处理自适应问题，适合处理顶宽的布局
+  <hr>
+  <div class='container'>
+    <div class='left'>左侧</div>
+    <!-- 由于此处有换行，整体800， 左侧200， + 中间空白 = 右侧600，大于800， 会换行 -->
+    <div class='right'>右侧</div>
+  </div>
+</body>
+</html>

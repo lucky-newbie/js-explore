@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    table{
+      width: 400px;
+      height: 200px;
+      border-collapse: collapse;
+    }
+    tr td{
+      border: 1px solid;
+    }
+
+
+    .table{
+      margin-top: 20px;
+      display: table;
+      width: 400px;
+      height: 300px;
+    }
+    .table-row{
+      display: table-row;
+    }
+    .table-cell{
+      display: table-cell;
+      vertical-align: middle;
+      border: 1px solid;
+      text-align: center;
+    }
+    .img{
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>table布局</h2>
+  使用简单
+  <hr>
+  <table class='table'>
+    <thead>
+      <tr>
+        <td>A</td>
+        <td>B</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>11</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td>22</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>通过display：table设置表格布局</h2>
+  <div class='table'>
+    <div class='table-row'>
+      <div class='table-cell'>
+            sdd
+      </div>
+      <div class='table-cell'>
+          <img class='img' src='https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1518682579,4064448354&fm=26&gp=0.jpg' />
+      </div>
+    </div>
+  </div>
+</body>
+</html>
