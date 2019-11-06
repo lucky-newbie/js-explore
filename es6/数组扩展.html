@@ -8,7 +8,9 @@
 </head>
 <body>
   <h2>数组扩展</h2>
-  Array.from: 方法从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。<br /> 
+  Array.from: 方法从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。
+  Array.from方法会将数组的空位，转为undefined，也就是说，这个方法不会忽略空位。
+  <br /> 
 
   Array.of: 将一组数据转换为数组<br />
 
@@ -21,6 +23,10 @@
   entries\keys\values<br />
   
   includes<br />
+
+  flat: 将数组拍平，默认为1，Array.flat(2), 将两层数组拍平<br> 
+
+  flatMap: 只能展开一层，相当于先执行map函数，然后将返回值执行flat(1)函数
 </body>
 <script>
    {
