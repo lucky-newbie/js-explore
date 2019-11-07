@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /*
+    语法： https://developer.mozilla.org/zh-CN/docs/Web/CSS/clip-path
+    */
+
+    .c1{
+      width: 400px;
+      height: 400px;
+      background-image: url('http://img5.imgtn.bdimg.com/it/u=2531384262,3699915741&fm=26&gp=0.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      clip-path: inset(100px 100px);
+    }
+
+    .c2{
+      width: 400px;
+      height: 400px;
+      background-image: url('http://img5.imgtn.bdimg.com/it/u=2531384262,3699915741&fm=26&gp=0.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      clip-path: circle(20%);
+      transition: clip-path 0.4s;
+    }
+    .c2:hover{
+      clip-path: circle(50%);
+    }
+  
+  </style>
+</head>
+<body>
+  <h2>clip-path:  按路径进行裁剪</h2>
+  1.对容器进行裁剪
+  2.常见几何徒刑
+  3.自定义路径
+  通过clip-path进行裁剪时，不会修改容器定位、大小
+  <hr>
+  <h2>方形</h2>
+  <div class='c1'></div>
+  <h2>圆形</h2>
+  <div class='c2'></div>
+  <h2>动画</h2>
+  <div class='c2'></div>
+  <h2>几何图形</h2>
+  <div class='c4'></div>
+</body>
+</html>

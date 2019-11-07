@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container{
+      width: 800px;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 2em; /*使文字垂直居中*/
+      /* 参数说明：
+        h-shadow： 水平阴影位置，允许负值；
+        v-shadow： 垂直阴影的位置， 允许赋值；
+        blur： 模糊的距离；
+        color： 阴影的颜色
+      */
+      text-shadow: 1px 1px 0 rgba(128, 128, 128, .2);
+    }
+    .container2{
+      width: 800px;
+      margin: 0 auto;
+      font-size: 18px;
+      text-shadow: -1px -1px 0 rgba(128, 128, 128, .2),
+                   -1px -1px 0 rgba(128, 128, 128, .2),
+                   -1px -1px 0 rgba(128, 128, 128, .2),
+                   -1px -1px 0 rgba(128, 128, 128, .2);
+    }
+  </style>
+</head>
+<body>
+  <h2>text-shadow</h2>
+  <div class='container'>
+      作用： 有立体感； 有印刷品质感
+  </div>
+  <div class='container2'>
+    text-shadow的效果二， 采用负值偏移
+  </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container1{
+      width: 60px;
+      height: 60px;
+      background-image: url('https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2018939532,1617516463&fm=26&gp=0.jpg');
+      background-position: -30px -30px;
+      background-repeat: no-repeat;
+      transition: background 0.4s;
+    }
+    .container1:hover{
+      background-position: -100px -100px;
+    }
+    .container2{
+      width: 800px;
+      height: 400px;
+      margin: 0 auto;
+      border: 1px solid;
+      background-image: url('https://ss3.baidu.com/-rVXeDTa2gU2pMbgoY3K///it///u=4121232426,1436481329&fm=202&src=ry_add_wise');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  
+  </style>
+</head>
+<body>
+  <h2>background</h2>
+  1.多背景（颜色、图片、渐变），创建纹理、图片
+  2.渐变
+  3.雪碧图动画
+  4.背景图尺寸适应（background-size, 除了给px、百分比之外，还可以给cover\contain）
+  <hr>
+  <h2>雪碧图动画</h2>
+  <div class='container1'></div>
+  <h2>背景图尺寸适应</h2>
+  <div class='container2'></div>
+</body>
+</html>

@@ -32,6 +32,27 @@
         display: none;
       }
     }
+
+    /* 折行 */
+    .container2{
+      width: 800px;
+      margin: 0 auto;
+    }
+    .info{
+      display: inline-block;
+      margin: 12px;
+      border-radius: 50%;
+      width: 180px;
+      height: 180px;
+      border: 1px solid hsl(20, 50%, 50%);
+      text-align: center;
+      line-height: 180px;
+    }
+    @media(max-width: 320px) {
+      .info{
+        display: block;
+      }
+    }
   
   </style>
 </head>
@@ -44,7 +65,22 @@
   2.一般要处理屏幕大小的问题
   <h2>主要方法</h2>
   1.隐藏 + 折行 + 自适应空间
-  2.rem/viewport/media query
+  2.rem： 通过在html标签上指定font-size，css样式中单位写rem，如：
+    html{
+      font-size: 20px;
+    }
+    .container{
+      width: 10rem;
+      height: 10rem;
+    }
+
+
+    viewport: 通过在viewport中的width写成固定值，比如width = 320，
+              所有设备宽度都会为320， 不同设备上留白会不同
+
+
+    media query: 通过@media(max-width) {} 去修改样式.
+
   <div class='container'>
     <div class='left'></div>
     <div class='center'></div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>如何用一个div画XX效果</h2>
+  可以采用box-shadow无限投影 + ::before ::after进行绘制
+  <h2>如何产生一个不占空间的边框</h2>
+  通过box-shadow, 不进行便宜模糊，直接扩展即可出现
+  通过outline设置
+  <h2>创建一个带边框的宽度200的元素</h2>
+  通过设置box-sizing属性：border-box
+  <h2>实现圆形元素</h2>
+  border-radius: 50%; 扇形
+  <h2>如何实现IOS图标的圆角</h2>
+  通过svg画出图标， 通过clip-path进行裁剪
+  <h2>背景图居中显示/不重复/改变大小</h2>
+  background-position: center
+  background-repeat: no-repeat;
+  background-size: cover/contain/百分比/px
+  <h2>如何平移/放大一个元素</h2>
+  <h2>如何实现3D效果</h2>
+  1.prespective: 500px
+  2. transform-style: preserve-3d;
+  3.transform: translate rotate ...
+</body>
+</html>

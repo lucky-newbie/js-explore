@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      padding-bottom: 50px;
+    }
+    .c1{
+      background-color: red;
+      width: 50px;
+      height: 50px;
+      box-shadow: 5px 5px 10px 10px rgba(9, 17, 134, 0.87);
+    }
+    .c2{
+      margin-top: 20px;
+      background-color: red;
+      width: 50px;
+      height: 50px;
+      box-shadow: 5px 5px 10px 10px rgba(9, 17, 134, 0.87) inset;
+    }
+    .c3{
+      margin-top: 20px;
+      background-color: red;
+      width: 50px;
+      height: 50px;
+      box-shadow: 0px 0px 0px 10px green;
+    }
+    .c4{
+      margin-top: 20px;
+      background-color: red;
+      width: 50px;
+      height: 50px;
+      box-shadow: 50px 50px 0px 10px green;
+    }
+    .c5{
+      width: 50px;
+      height: 50px;
+      border-radius: 25px; /*如果是圆角， 则投影也会变成圆角*/
+      background-color: blue;
+      box-shadow: 25px 25px 0 -20px red,
+                  -25px -25px 0 -20px red,
+                  25px -25px 0 -20px red,
+                  -25px 25px 0 -20px red;
+    }
+  </style>
+</head>
+<body>
+    <h2>box-shadow</h2>
+    box-shadow: (水平方向偏倚， 垂直偏移， 模糊距离， 扩展距离(如果为付之，则会变小)，颜色， （inset： 内阴影））)
+    作用：
+    1.营造层次感（立体感）
+    2.充当没有宽度的边框（充当边框不会占宽度）, 或者设置outline
+    3.特殊效果
+    <hr>
+    <div class='c1'>box-shadow</div>
+    <div class='c2'>内阴影</div>
+    <div class='c3'>扩展</div>
+    <div class='c4'>元素复制效果</div>
+    <h2>一个元素绘制效果， 多数都通过box-shadow进行绘制</h2>
+    <div class='c5'></div>
+    <div class='c6'>outline</div>
+</body>
+</html>

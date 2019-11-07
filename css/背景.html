@@ -44,6 +44,17 @@
       background-repeat: no-repeat;
     }
 
+    .c8{
+      /* 
+        radial-gradient(shape size at position, start-color, ..., last-color);
+        shape: circle(圆形)/ ellpse(椭圆)
+        size渐变大小: closest-side\farthest-size\closest-corner\fartheset-corner
+
+      */
+       height: 200px;
+       background: radial-gradient(closest-side at 60% 55%, red, yellow, black);
+    }
+
   </style>
 </head>
 <body>
@@ -53,6 +64,8 @@
   <div class='c2'></div>
   <h2>多背景叠加（css3）</h2>
   <div class='c3'></div>
+  <h2>径向渐变</h2>
+  <div class='c8'></div>
   <h2>图片作为背景图片和属性，应用如:雪碧图</h2>
   <div class='c4'></div>
     通过background-position属性来调整图片位置
