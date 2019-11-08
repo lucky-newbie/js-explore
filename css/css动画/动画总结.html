@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+    }
+    #d1{
+      background-color: red;
+    }
+    #d2{
+      background-color: green;
+    }
+    #d3{
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <h2>总结</h2>
+  <h2>1.实现css动画的方式有几种？</h2>
+    transition
+    animation keyframes
+  <h2>2.过渡动画和关键帧动画的区别</h2>
+    a.过渡动画需要有元素状态的改变
+    b.关键帧动画不需要元素状态改变
+    c.关键帧动画控制的更加精细(播放方向、状态、次数等)
+  <h2>3.如何实现逐帧动画</h2>
+    a.使用关键帧动画 animation
+    b.通过使用animation-timing-function： steps(1)去掉补间动画
+  <h2>4.CSS动画性能</h2>
+    1.性能不坏
+    2.部分情况下优于JS
+    3.但JS可以做到更好
+    4.部分高危属性， 如box-shadow， 变化阴影时会耗费性能
+  <h2>5.JS实现动画效果</h2>
+    JS动态修改css样式,setTimeout/setInterval/requestAnimationFrame/鼠标事件等
+  <hr>
+  <div id='d1'></div>
+  <div id='d2'></div>
+  <div id='d3' style='width: 200px'></div>
+</body>
+<script>
+  /* setTimeout方式*/
+  /*requestAnimationFrame*/
+</script>
+</html>

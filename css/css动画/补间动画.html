@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .c1{
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      /* 
+        transition可以同时指定多个属性
+      */
+      transition: width 1s, background-color 2s;
+      /* transition: width 1s; */
+      /*
+        transition-delay: 1s; 延迟时间, 简写： transition: 1s width 1s;
+        transition-timing-function: 定义动画进度和时间的关系
+      */
+      transition-timing-function: ease-in;
+    }
+    .c1:hover{
+      width: 400px;
+      background-color: green;
+    }
+  
+  </style>
+</head>
+<body>
+  <h2>补间动画</h2>
+  1.位置-平移（left/right/margin/transform）
+  2.方位（transform）
+  3.大小（transfrom）
+  4.透明度（opacity）
+  5.其他-线性变换（transform）
+  <hr>
+  <div class='c1'></div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .c{
+        width: 200px;
+        height: 200px;
+        background: red;
+        animation: run 1s;
+        /* animation-direction: reverse; */
+        animation-iteration-count: infinite;
+        /* animation-play-state:paused; */
+        animation-fill-mode: forwards;
+        /*
+          animation-direction: reverse; 动画方向
+          animation-iteration-count: 动画次数
+          animation-play-state: 动画播放状态
+          animation-fill-mode: 动画停留状态
+        */
+      }
+      @keyframes run{
+        0% {
+          width: 200px;
+        }
+        50%{
+          width: 300px;
+        }
+        100%{
+          width: 800px;
+        }
+        /* from {
+          width: 200px;
+        }
+        to{
+          width: 800px;
+        } */
+      }
+    </style>
+  </head>
+  <body>
+    <h2>keyframe 关键帧动画</h2>
+    指定一个动画在关键路径上，用css指定动画， 相当于多个补间动画组合到一起, 有过渡效果
+    与补间动画区别：
+    1.补间动画需要元素改变时才会触发
+    2.关键帧动画与元素状态变化无关，定义更加灵活
+    <hr>
+    <div class='c'></div>
+  </body>
+  </html>
