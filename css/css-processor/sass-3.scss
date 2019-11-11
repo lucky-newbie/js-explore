@@ -1,0 +1,29 @@
+/*
+  sass mixin
+  与less mixin区别：
+    1.定义mixin时，sass需要使用@mixin 名称（）{}, less定义时，则.类命(){}
+*/
+
+$fontSize: 12px;
+
+@mixin block($fontSize) {
+  font-size: $fontSize;
+  border: 1px solid red;
+}
+
+@mixin block2{
+  background-color: pink;
+}
+
+.wrapper1{
+  @include block($fontSize);
+  color: green;
+}
+.wrapper2{
+  @include block($fontSize);
+  background-color: yellow
+}
+
+.wrapper3{
+  @include block2()
+}

@@ -1,0 +1,36 @@
+/* 
+  less extend
+  把公共样式提取出来， 写到一起, 产生更小的代码
+*/
+
+@fontSize: 12px;
+
+.blcok{
+  font-size: @fontSize;
+  color: red;
+}
+
+.wrapper{
+  .nav:extend(.blcok){
+  }
+  .content{
+    font-size: 14px;
+    &:extend(.blcok);
+    &:hover{}
+  }
+}
+/* 转化完css 样子 */
+/*
+会将:extend部分提取到一起
+.blcok,
+.wrapper .nav,
+.wrapper .content {
+  font-size: 12px;
+  color: red;
+}
+.wrapper .content {
+  font-size: 14px;
+}
+
+
+*/

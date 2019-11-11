@@ -1,0 +1,9 @@
+/*
+  sass @import 
+*/
+
+@import "./variable.scss";
+
+.wrapper {
+  font-size: $fontSize;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+ <h2>CSS与处理器介绍：</h2>
+ 1.是基于CSS的另一种语言；
+ 2.通过工具编译成CSS；
+ 3.添加了很多css不具备的特性， 比如变量、函数
+ 4.意义： 能提升CSS文件的组织
+ <h2>常见的预处理器</h2>
+ less：编译速度较快，可以在浏览器上执行(script中引入less.js)， less由js编写
+ sass：由ruby写的，编译速度较快，二者没太大区别，node-sass工具进行编译
+ <h2>CSS预处理器功能</h2>
+ 1.嵌套，反映层级和约束
+ 2.变量和计算，减少重复代码
+ 3.extend 和 mixin 代码片段（继承和混合）, 比如清除浮动、定一个基础块等
+ 4.循环， 适用于复杂有规律的样式，比如：写表格样式
+ 5.import css文件模块化， css中的import仅仅动态引入css
+ <br>
+ <h2>sass与less语法比对</h2>
+ <pre>
+  变量定义：
+    less使用@符号;
+    sass使用$符号;
+  mixin： 
+    less： .类名{};  
+    sass: @mixin 名称{}
+  extend:
+    less: :extend(.类名)
+    sass: @extend .类命
+  extend 与 mixin区别：
+    extend会将相同代码提取到一起, 编译代码更小
+    mixin 会将相同代码分别复制到对应地方， mixin可传参数，可处理复杂场景
+  loop：
+    less: 通过定义mixin，mixin调用自身,形成递归， 通过when判断结束, 如：
+      .gen(@n) when (@n > 0) {
+        .gen(@n - 1);
+        .col-@{n} {
+          width: 1000px / 12 * @n;
+        }
+      }
+    sass: 支持for 循环, @for $i form 1 through 12{}
+  import:
+      less: @import './XXX.less';
+      sass: 
+  </pre>
+  <hr>
+  <h2>CSS预处理器框架</h2>
+    1.SASS-Compass
+    2.Less Lesshat/EST 
+    作用：提供现成的mixin、类似JS类库
+  <h2>预处理器相关问题</h2>
+    常见的CSS预处理器
+      less（nodejs实现）
+      sass（ruby实现， node-sass）
+      stylus
+    预处理器的作用？
+      1.帮助更好的组织CSS代码
+      2.提高代码复用率/可维护性
+    预处理器有哪些能力？
+      1.嵌套， 可以反应层级和约束
+      2.变量和计算，减少重复代码
+      3.extend、mixin代码片段
+      4.循环,解决复杂由规律的样式
+      5.import css， css模块化方案
+    预处理器的优缺点？
+      优点： 提高代码复用率/维护性
+      缺点：需要引入编译过程；
+           sass/lessyou 自己的语法，有学习成本
+</body>
+</html>

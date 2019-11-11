@@ -1,0 +1,21 @@
+/*
+  sass变量
+  使用“$”定义变量，为了使CSS与JS进行区别， 所以用'$'
+*/
+
+$bgColor: red;
+$fontSize: 12px;
+
+body{
+  margin: 0;
+
+  .wrapper{
+    background-color: lighten($bgColor, 40%);
+    .nav{
+      font-size: $fontSize;
+    }
+    &:hover{
+      font-size: $fontSize + 4px;
+    }
+  }
+}

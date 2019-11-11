@@ -1,0 +1,54 @@
+/*
+  mixin混合， 在css中进行代码复用, 将相同代码进行复制， 可传值
+*/
+
+@fontSize: 12px;
+@bgColor: red;
+
+// 定义公共样式
+.block(@fontSize){
+  font-size: @fontSize;
+}
+
+.wrapper1{
+  // 调用公共样式， 传参数
+  .block(@fontSize);
+  color: red;
+}
+
+.wrapper2{
+  .block(@fontSize + 2px);
+  color: green;
+}
+
+/* 不传参数 */
+.box{
+  color: @bgColor
+}
+.box1{
+  .box()
+}
+.box2{
+  .box()
+}
+
+/*   转换完css    */
+/*
+.wrapper1 {
+  font-size: 12px;
+  color: red;
+}
+.wrapper2 {
+  font-size: 14px;
+  color: green;
+}
+.box {
+  color: red;
+}
+.box1 {
+  color: red;
+}
+.box2 {
+  color: red;
+}
+*/

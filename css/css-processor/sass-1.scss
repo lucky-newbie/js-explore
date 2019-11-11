@@ -1,0 +1,14 @@
+/* sass 嵌套 */
+/* 编译方式： node-sass 文件名 css文件名 */
+body{
+  margin: 0;
+}
+.wrapper{
+  background-color: red;
+  .nav{
+    font-size: 14px;
+  }
+  &:hover{
+    background-color: blue;
+  }
+}

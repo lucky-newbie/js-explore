@@ -1,0 +1,22 @@
+/*
+  sass loop
+*/
+/* 通过mixin 方式创建 */
+@mixin gen-col($num) {
+  @if $num > 0 {
+    @include gen-col($num - 1);
+    .col-#{$num}{
+      width: 1000px / 12 * $num
+    }
+  }
+}
+
+@include gen-col(12);
+
+/* 通过sass支持的for循环写 */
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    width: 1000px / 12 * $i
+  }
+}

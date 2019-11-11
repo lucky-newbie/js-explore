@@ -1,0 +1,16 @@
+
+/* less 嵌套 */
+/* 编译命令： lessc 文件名 、 lessc 文件名 转化css文件名 */
+body{
+  margin: 0px 0px;
+}
+.wrapper{
+  background-color: white;
+  .nav{
+   font-size: 14px;
+  }
+  /* & 表示当前父级，即当前的.wrapper */
+  &:hover{
+    background-color: red;
+  }
+}

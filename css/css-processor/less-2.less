@@ -1,0 +1,25 @@
+/*
+  less变量, 使用@进行定义变量， 为了更贴近CSS， 所以使用“@”
+  变量的定义要有规划， 有关联的地方使用变量，不同语义下使用不同的变量
+*/
+
+@fontSize: 12px;
+@bgColor: red;
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper{
+  // 内置很多函数：lighten
+  background-color: lighten(@bgColor, 40%);
+  .nav{
+    font-size: @fontSize;
+  }
+ 
+  &:hover{
+     // 变量计算
+    font-size: @fontSize + 4px;
+  }
+}
