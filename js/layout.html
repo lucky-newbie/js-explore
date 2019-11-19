@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* 重置CSS样式 */
+    html *{
+      margin: 0;
+    }
+    img{
+      width: 800px;
+      height: 300px;
+    }
+    .c1{
+      height: 200px;
+    }
+    .c1-left{
+      float: left;
+      width: 100px;
+      height: 200px;
+      background-color: red;
+    }
+    .c1-right{
+      float: right;
+      width: 100px;
+      height: 200px;
+      background-color: green;
+    }
+    .c1-center{
+      width: 100%;
+      margin: 0 100px;
+      height: 200px;
+      background-color: pink;
+    }
+
+    .c2{
+      height: 200px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .c2-left{
+      position: absolute;
+      width: 100px;
+      height: 200px;
+      background-color: red;
+      left: 0px;
+    }
+    .c2-center{
+      width: 100%;
+      height: 200px;
+      margin: 0 100px;
+      background-color: pink;
+    }
+    .c2-right{
+      position: absolute;
+      width: 100px;
+      height: 200px;
+      background-color: green;
+      right: 0px;
+      /* top: 0px; */ /* 关键在于right 部分是基于center之前还是之后*/
+    }
+
+    .c3{
+      display: flex;
+      height: 200px;
+    }
+    .c3-left{
+      display: flex;
+      width: 100px;
+      height: 200px;
+      background-color: red;
+    }
+    .c3-right{
+      display: flex;
+      width: 100px;
+      height: 200px;
+      background-color: green;
+    }
+    .c3-center{
+      display: flex;
+      flex: 1;
+      height: 200px;
+      background-color: pink;
+    }
+
+    .table{
+      width: 100%;
+    }
+    td{
+    }
+    .left{
+      width: 100px;
+      height: 200px;
+      background: red;
+    }
+    .right{
+      width: 100px;
+      background: green;
+    }
+    .center{
+      background: pink;
+    }
+    
+  </style>
+</head>
+<body>
+  <img src='./2.png'  />
+  <hr >
+  <h2>页面布局</h2>
+  <h2>高度已知，写出三栏布局，左右各100p，中间自适应</h2>
+  <h2>float + margin</h2>
+  <section class='c1'>
+    <div class='c1-left'></div>
+    <div class='c1-right'></div>
+    <div class='c1-center'>
+      <p>哈哈哈哈哈哈哈哈哈</p>
+      <p>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+      <p>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+      <p>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+      <p>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+      <p>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+      <p>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+      <p>哈哈哈哈哈哈哈哈哈</p>
+      <p>哈哈哈哈哈哈哈哈哈</p>
+      <p>哈哈哈哈哈哈哈哈哈</p>
+    </div>
+  </section>
+  <hr >
+  <h2>绝对定位 + margin</h2>
+  <section class='c2'>
+    <div class='c2-left'></div>
+    <div class='c2-right'></div>
+    <div class='c2-center'></div>
+  </section>
+  <h2>flex</h2>
+  <section class='c3'>
+    <div class='c3-left'></div>
+    <div class='c3-center'></div>
+    <div class='c3-right'></div>
+  </section>
+  <h2>table布局</h2>
+  <table class='table'>
+    <tr>
+      <td class='left'></td>
+      <td class='center'></td>
+      <td class='right'></td>
+    </tr>
+  </table>
+  <style>
+    .c4{
+      width: 100%;
+      display: table;
+      height: 100px; 
+    }
+    .c4 > div{
+      display: table-cell;
+    }
+    .c4-left{
+      width: 100px;
+      background: red;
+    }
+    .c4-right{
+      background: green;
+      width: 100px;
+    }
+    .c4-center{
+      background: pink;
+    }
+  </style>
+  <section>
+    <div class='c4'>
+      <div class='c4-left'></div>
+      <div class='c4-center'></div>
+      <div class='c4-right'></div>  
+    </dic>
+  </section>
+  <h2>grid布局</h2>
+  <hr >
+  <h2>高度未知如何实现三栏布局, 如果去掉高度，哪个方案可用</h2>
+  flex和表格布局如果高度未知可以适用;
+
+  <h2>五种方案的优缺点、兼容性如何</h2>
+  浮动： 缺点：需要清除浮动， 优点：兼容性好
+  绝对定位： 缺点：由于脱离了文档流，子元素会脱离文档流，使用有局限性 优点：简单快捷
+  flexbox：解决上述两个方式的不足，相对完美。
+  表格布局：优点： 兼容性好， 缺点：某一个单元格高度需要调高时，改行其他单元格也会变高
+  grid： 优点：
+  <h2>BFC</h2>
+  <h2>上下高度固定， 中间自适应</h2>
+  <h2>左宽度固定，右自适应</h2>
+  <h2>右宽度固定，左自适应</h2>
+  <h2>上高度固定，下自适应</h2>
+  <h2>下高度固定，上适应</h2>
+</body>
+</html>

@@ -54,10 +54,102 @@
 </head>
 <body>
   <h2>盒模型</h2>
-  content
-  padding
-  border
-  margin
+  <pre>
+    什么是盒模型？包含：标准盒模型 + IE盒模型， 由四部分组成：
+      content
+      padding
+      border
+      margin
+    标准盒模型与IE盒模型区别：
+      高度和宽度计算不同
+      IE盒模型宽度/高度： content + padding + border
+      标准盒模型：content
+
+    css如何设置两种模型： 
+      box-sizing： content-box（标准盒模型,默认为标准盒模型）/border-box (IE
+    )
+
+    js如何设置获取盒模型对应的高和宽
+      通过JS获取到dom，然后
+      1.dom.style.width/height（dom 内链样式设置过，才可以通过改方式获取）
+      2.dom.currentStyle.width/height; (仅IE支持， 得到渲染后的宽度、高度)
+      3.windo.getComputedStyle(dom).width/height； 得到渲染时的样式，没有兼容性问题
+      4.dom.getBoundingClientRect()； 得到该dom元算的四个位置，上下左右，从而得到width/height
+
+    实例题： 根据盒模型解释边距重叠
+      1.兄弟节点之间有margin时，去最大值（当块级元素设置为overflow时，会创建一个BFC）
+    
+    BFC/IFC(边距重叠解决方案)
+      1.bfc基本概念： 块级格式化上下文 ：Block Formatting Context
+      2.bfc的原理（渲染规则）特点：
+        a.bfc元素内在垂直方向会发生边距重叠
+        b.bfc的区域不会与浮动区域重叠
+        c.bfc在页面上时一个独立的元素，外部元素不会影响内部元算，内部元素也不会影响外部元素
+        d.计算BFC元素的高度时候， 浮动元素也会参与计算
+      3.如何创建BFC？
+        a.overflow：不为visible时， 比如： auto、hidden;
+        b.float的值不为none;
+        c.position的值不为static、relative
+        d.display的值为table、table-cell、table-row、inline-block等
+      4.BFC的应该场景：
+
+  </pre>
+  <section id='margin'>
+    <style>
+      #margin{
+        background: pink;
+        overflow: hidden;
+      }
+      #margin >p{
+        margin: 5px auto 20px;
+        background: red;
+      }
+    </style>
+    <p>BFC1</p>
+    <!-- 下边距和上边距重叠，则会使用最大值 20px --> 
+    <p>BFC2</p>
+    <!-- 创建一个BFC，则不会出现边距重叠问题 --> 
+    <div style='overflow: hidden'>
+    <p>BFC3</p>
+    </div>
+    <p>BFC4</p>
+  </section>
+  <!-- BFC元素不与float元素重叠 -->
+  <section id='layout'>
+    <style>
+      #layout{
+        background: red;
+      }
+      #layout .left{
+        float: left;
+        width: 100px;
+        height: 100px;
+        background: green;
+      }
+      #layout .right{
+        background: blue;
+        height: 110px;
+        overflow: auto;
+      }
+    </style>
+    <div class='left'></div>
+    <div class='right'></div>
+  </section>
+  <!-- 通过bfc 解决高度塌陷问题 -->
+  <section id='float'>
+    <style>
+        #float{
+          margin: 20px;
+          background: red;
+          overflow: hidden; /* 设置为bfc，让浮动元素参与父元素计算高度*/
+        }
+        #float .float{
+          float: left;
+          font-size: 16px;
+        }
+    </style>
+    <div class='float'>浮动元素</div>
+  </section>
   <hr>
   内容的宽度/高度只对内容生效（content）
   获取占用空间大小： content + padding + border

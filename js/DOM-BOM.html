@@ -84,6 +84,43 @@
 <body>
   <h2>JS基础知识</h2>
   JS-web-api
+  <hr>
+  DOM事件
+  <pre>
+    dom事件的定义的级别（DOM0、DOM2、DOM3）
+      DOM0: element.onclick = function() {}
+      DOM2: element.addEventListene('click', function(){,} false); 
+            ie上写法: element.attachEvent('click', function(){})
+      DOM3z: 增加一些事件类型，比如鼠标、键盘事件，element.addEventListener('keyup', function(){})
+    DOM事件模型是什么？
+      事件捕获/事件冒泡
 
+    DOM事件流是什么？
+      从鼠标点击开始，选中对应元素
+      1.捕获
+      2.目标阶段
+      3.冒泡  
+
+    描述DOM事件捕获的具体流程：
+      事件捕获：开始从window对象  -> document -> html(document.element获取html节点) -> body -> 按照层级进行传递 -> 目标元素
+      事件冒泡： 事件捕获逆序
+
+    Event对象的常见应用有哪些？，注册事件
+      event.preventDefault();  阻止默认事件
+      event.stopPropagation(); 阻止冒泡
+        stopPropagation方法作用在后续节点上，目的在执行完绑定到当前元素上的所有事件处理程序之后，停止执行所有后续节点的事件处理程序
+      event.stopImmediatePropagation() 
+        stopImmediatePropagation方法作用在当前节点以及事件链上的所有后续节点上，目的是在执行完当前事件处理程序之后，停止当前节点以及所有后续节点的事件处理程序的运行
+      event.currentTarget 当前绑定事件的元素， 比如通过事件委托为多组img绑定点击事件，currentTarget即为div， target 为img
+
+      event.target 当前点击的元素
+
+    如何自定义事件？
+      var eve = new Event('custome');
+      window.addEventListener('custome', function() {
+        console.log('触发')
+      })
+      window.dispatchEvent(eve)
+  </pre>
 </body>
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #id{
+      width: 200px;
+      height: 200px;
+      line-height: 200px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <h2>事件捕获</h2>
+  <div id="id">
+      目标元素
+  </div>
+  <h2>自定义事件</h2>
+  <div id="id2">
+    自定义事件
+  </div>
+</body>
+<script>
+/* 事件捕获 */
+  var dom = document.getElementById('id');
+  window.addEventListener('click', function(){
+    console.log('window 事件捕获')
+  }, true) // 默认为false。true表示捕获时处罚
+
+  document.addEventListener('click', function(){
+    console.log('document 捕获')
+  }, true)
+
+  document.documentElement.addEventListener('click', function(){
+    console.log('html 捕获')
+  }, true)
+
+  document.body.addEventListener('click', function(){
+    console.log('body 捕获')
+  }, true)
+
+  dom.addEventListener('click', function() {
+    console.log('目标元素')
+  }, true)
+  console.log('***************')
+</script>
+<script>
+  /*自定义事件*/
+  const d = document.getElementById('id2')
+  var eve = new Event('test');
+  d.addEventListener('test', function(){
+    console.log('自定义事件')
+  });
+  d.dispatchEvent(eve)
+</script>
+</html>

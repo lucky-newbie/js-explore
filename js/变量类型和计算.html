@@ -63,6 +63,55 @@
 */
 </script>
 <body>
-  
+  隐式类型转换
+  显示类型转换(调用Number\String\Boolean)
+  <h2>Number</h2>
+  原始类型转换：
+    数值： 转换后还是原来的数值
+    字符串： 如果可以转换为数值，则转换为对应的数值，否则NaN，空字符串转换为0；
+    布尔值： true转换为1， false转换为0
+    undifined： 转换为NaN
+    null： 转换为0
+  对象类型转换：
+    1.先调用对象自身的valueOf方法，如果返回原始类型的值（数值、字符串、boolean），则直接对该值使用Number方法，不进行后续步骤
+    2.如果valueOf方法返回的时引用类型的值（比如数组、对象），则调用对象的toString方法,如果toString返回的是原始类型的值，则调用Number方法,
+    3.如果toString方法返回的是引用类型的值，则报错
+  <h2>字符串</h2>
+  原始类型转换
+    1.数值：转换为对应的字符串
+    2.字符串： 转换后还时原来的值
+    3.布尔值： true转换为：‘true’， false转换为‘false’
+    4.undefined： 转换为'undefined'
+    5.null： 转换为‘null’
+  引用类型转换：
+    1.先调用toString方法，如果toString返回原始类型值，则对该值使用String方法
+    2.如果toString方法返回引用类型的值，则调用valueOf方法，如果valueOf方法返回的时原始类型的值，则对该值使用String方法
+    3.如果valueOf返回的是引用类型的值，则报错 
+  <h2>布尔类型转化</h2>
+      undefined\null\0\''\NaN都会转换为false，其他为true
+  <h2>隐式类型转换</h2>
+    1.四则运算
+    2.判断语句
+    3.Native调用， 比如console.log\alert
 </body>
+<script>
+  var obj = {
+    toString: function() {
+      return {
+        b: 2
+      }
+    },
+    valueOf: function() {
+      return 'b'
+    }
+  }
+  console.log(obj, String(obj))
+  // 引用类型数据调用String顺序： 先调用toString方法，然后在调用valueOf方法
+  console.log('[] + []', ([] + [])); // ''
+  console.log('[] + {}', ([] + {})) // '[object Object]'
+  console.log('{} + []', ({} + [])); // '[object Object]'
+  console.log('{} + {}', ({} + {})) // '[object Object][object Object]'
+  console.log('true + true', (true + true)); // 2
+  console.log(1 + {a: 1}); // '1[object Object]'
+</script>
 </html>
