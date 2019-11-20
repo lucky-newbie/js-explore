@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>提升页面性能的方式有哪些</h2>
+  <pre>
+  1.资源压缩合并，减少http请求
+  2.非核心代码异步加载 -> 异步加载方式 ->异步加载的区别
+    1)动态脚本加载， 动态创建script标签，加载脚本
+    2）script标签中添加 defer
+    3）script标签中添加 async
+    区别：
+      defer是在html解析完之后才会执行，如果是多个，则会按照加载顺序依次执行
+      async是在加载完之后立即执行，如果是多个执行顺序和加载顺序无关
+  3.利用浏览器缓存 -> 缓存的分类 -> 缓存的原理
+    缓存分类： 强缓存、协商缓存
+    1）强缓存
+      expires（绝对时间）
+      cache-control(如果既有expires也有cache-control，则以cache-control为准)
+    2）协商缓存
+      last-modified if-modified-since
+      etag if-none-match
+    http协议头中有哪些和缓存有关？ 以上四个字段
+    
+  4.使用CDN
+  5.预解析DNS
+    a标签在http协议中， 默认是打开了dns prefetch，但是https不开启的，所以需要加meta开启dns prefetch
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    <link rel="dns-prefetch" href="//host_name_toprefetch.com">
+    
+  6.css prefetch/js preload
+  </pre>
+  <h2>输入url到页面加载出来的流程是什么</h2>
+</body>
+</html>
