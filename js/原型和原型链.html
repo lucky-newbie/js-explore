@@ -17,6 +17,7 @@
     padding-top: 20%
   }
 </style>
+
 <script>
 
   // 如何判断一个变量是否是数组对象
@@ -112,6 +113,24 @@
 
 </script>
 <body>
+  <h2>创建对象有几种方法</h2>
+    1.字面量方式
+      var o1 = { name: 'o1' };
+      var o1 = new Object({name: 'o1'});
+    2.显示构造函数创建对象
+      var m = function(){this.name = 'o2'};
+      var o2 = new M();
+    3.Object.create()方法创建s
+      var P = {name: 'o3'}
+      var o3 = Object.create(P)
+  <h2>什么是原型、构造函数、实例、原型链</h2>
+    <img src='./3.png' style='width: 800px; height: 300px' />
+    1.构造函数可以通过new运算符生成一个实例， 任何函数都可以当作构造函数，只要通过new就会变成构造函数
+    2.
+  <h2>instanceof 原理</h2>
+  <h2>new运算符实现原理</h2>
+  <hr>
+  
   <div id ='id'>ssdsadasdasdasd</div>
   <div class='outer'>
     <div class='inner'></div>

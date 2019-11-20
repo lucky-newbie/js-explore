@@ -47,7 +47,7 @@
     // 判断readyState
     if (xhr.readyState == 4) {
       // 判断Http状态码
-      if (xhr.status == 200) {
+      if (xhr.status == 200 || xhr.status == 304 || xhr.status == 206) {
         alert(xhr.responseText)
       }
     }
