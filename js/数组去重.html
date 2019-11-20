@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>数组去重多种方式</h2>
+  1.set实现
+  2.数组排序+ 一次循环
+  3.对象属性判断+ 一次循环
+  4.for 循环 + includes/ filter+indexof
+  5.双层for循环
+</body>
+<script>
+  var a = [1,2,3,4,5,6,7];
+  var b = [1,2,3,4,5,6,7];
+  /*
+    方式一
+    通过set实现（此方式速度第二快）
+  */
+  function distinct1(a, b) {
+    return Array.from(new Set([...a, ...b]))
+  }
+  /*
+    方式二：
+    通过数组排序 + 一次循环即可（此方式速度第三快）
+  */
+  function distinc2(a, b){
+    const array = a.concat(b).sort();
+    const res = [array[0]];
+    for (let i = 1; i < array.length; i++) {
+      if (array[i] !== array[i - 1]) {
+        res.push(array[i])
+      }
+    }
+    return res;
+  }
+
+  /*
+    方式三：
+      通过对象方式判断（此方式速度最快）
+  */
+  function distinct3(a,b){
+    var obj = {};
+    var res = [];
+    var array = a.concat(b);
+    for (let i = 0; i < array.length; i++) {
+      if (!obj[array[i]]) {
+        res.push(array[i])
+        obj[array[i]] = 1
+      }
+    }
+    return res;
+  }
+  /**
+   *方式四
+   通过for of + includes
+  */
+  function distinct4(a,b){
+    const array = a.concat(b);
+    const res = [];
+    for (let v of array) {
+      if (!res.includes(v)) {
+        res.push(v)
+      }
+    } 
+    return res;
+  }
+  /*方式五， 双层for循环，速度最慢*/
+</script>
+</html>
