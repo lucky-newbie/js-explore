@@ -32,7 +32,7 @@
 </script>
 <script>
   // ajax基于XMLHttpRequest对象实现
-  var xhr = new XMLHttpRequest();
+  var xhr = new XMLHttpRequest(); // 此处没有判断是否是IE浏览器， 如果IE需使用另外一个对象
   xhr.open('GET', '/api',false);
   // onreadystatechange方法为异步方法， 每次readyState状态码改变都会触发此方法
   xhr.onreadystatechange = function () {

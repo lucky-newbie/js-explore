@@ -13,6 +13,8 @@
   </div>
 </body>
 <script>
+  
+
   /*
     编写一个通用的事件监听函数
     事件冒泡流程
@@ -65,5 +67,30 @@
 
 
 
+</script>
+<script>
+
+  // 练习
+  /* 绑定事件 + 事件委托 */
+  function bindListener(ele, type,  selector, callback) {
+    ele.addEventListener(type, function(e) {
+      if (!callback) {
+        callback = selector;
+        selector = null;
+      }
+      if (selector) {
+        const target = e.target;
+        if (target.matches(selector)) {
+          callback.call(target, e);
+        }
+      } else {
+        callback(e);
+      }
+    })
+  }
+  const dom2 = document.getElementById('a');
+  bindListener(dom2, 'click', function(e) {
+    console.log('sssss')
+  })
 </script>
 </html>
