@@ -19,7 +19,7 @@
 ```
   {
     'If-Modified-Since': '2019-11-01'(第一次响应头中得Last-Modified得值),
-    'I3f-Nono-Match': '1'(第一次响应头中得Etag得值)
+    'If-None-Match': '1'(第一次响应头中得Etag得值)
   }
 ```
 服务器在第二次接受到请求时，发现时no-cache， 则服务器端进行比较If-Modified-Since和之前得Last-Modified得值或If-None-Match与Etag得值，如果相同， 则返回304状态码， 浏览器发现304，则从浏览器缓存中拿资源，忽略掉服务器返回得数据
