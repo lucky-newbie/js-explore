@@ -86,13 +86,17 @@
         b.bfc的区域不会与浮动区域重叠
         c.bfc在页面上时一个独立的元素，外部元素不会影响内部元算，内部元素也不会影响外部元素
         d.计算BFC元素的高度时候， 浮动元素也会参与计算
+        e.内部的Box会在垂直方向，一个接一个地放置。
+        f.每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。
       3.如何创建BFC？
         a.overflow：不为visible时， 比如： auto、hidden;
         b.float的值不为none;
         c.position的值不为static、relative
-        d.display的值为table、table-cell、table-row、inline-block等
+        d.display的值为 inline-block, table-cell, table-caption, flex, inline-flex 等
       4.BFC的应该场景：
-
+        a.解决浮动
+        b.两栏自适应
+        3.边距重叠
   </pre>
   <section id='margin'>
     <style>

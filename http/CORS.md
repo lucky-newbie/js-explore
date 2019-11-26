@@ -1,5 +1,5 @@
 [cors说明](https://fetch.spec.whatwg.org/#http-cors-protocol)
-## CORS 允许方法（除去以下三种方法，需要预检请求）
+## CORS(cross-origin sharing standard) 允许方法（除去以下三种方法，需要预检请求）
 * get
 * post
 * head
