@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id='root'>
+
+  </div>
+</body>
+<script src='./diff.js'></script>
+<script src='./element.js'></script>
+
+<script>
+  console.log('验证虚拟DOM转换为真实DOM，并渲染到页面上');
+  const virtualDOM = createElement('ul', {class:'list'}, [
+    createElement('li', {class:'item'}, ['节点A']),
+    createElement('li', {class:'list'}, ['节点B']),
+    createElement('li', {class:'list'}, ['节点C'])
+  ]);
+  console.log('虚拟DOM',virtualDOM)
+  const realEle = render(virtualDOM)
+  console.log('真实DOM', realEle);
+  renderDOM(realEle, document.getElementById('root'))
+
+  const virtualDOM2 = createElement('ul', {class:'list'}, [
+  createElement('li', {class:'item1'}, ['节点A1']),
+  createElement('li', {class:'list1'}, ['节点B1']),
+  createElement('li', {class:'list24'}, ['节点C1'])
+]);
+
+  const patches = diff(virtualDOM, virtualDOM2)
+  console.log('patches', patches);
+
+  patch(document.getElementById('root'), patches)
+
+</script>
+</html>
