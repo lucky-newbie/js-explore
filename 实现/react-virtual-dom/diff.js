@@ -99,7 +99,7 @@
         for (let key in patch.attr) {
           const v = patch.attr[key];
           if (v) {// 如果有值则进行更新
-            node.setAttribute(key, v)
+            setAttribute(node,key, v)
           } else {
             // 没有值，则删除属性
             node.removeAttribute(key)

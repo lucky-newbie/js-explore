@@ -27,9 +27,9 @@
   renderDOM(realEle, document.getElementById('root'))
 
   const virtualDOM2 = createElement('ul', {class:'list'}, [
-  createElement('li', {class:'item1'}, ['节点A1']),
-  createElement('li', {class:'list1'}, ['节点B1']),
-  createElement('li', {class:'list24'}, ['节点C1'])
+  createElement('li', {class:'item'}, ['节点A1']),
+  createElement('li', {class:'list'}, ['节点B1']),
+  createElement('li', {class:'list2'}, ['节点C1'])
 ]);
 
   const patches = diff(virtualDOM, virtualDOM2)
