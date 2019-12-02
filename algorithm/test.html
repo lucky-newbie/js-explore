@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+  function swap(array, i, j) {
+    if (array[i] > array[j]) {
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+  console.log('***** 冒泡排序*********')
+  const bubbleSortData = [3,2,1,4];
+  function bubbleSort(array) {
+    for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < array.length - i; j++) {
+        swap(array, j, j + 1)
+      }
+    }
+    return array
+  }
+  
+  console.log('冒泡排序:',bubbleSort(bubbleSortData))
+  console.log('********选择排序********');
+
+  function selectSort(array) {
+    for (let i = 0; i < array.length; i++) {
+      let min = i; // 找到最小的位置
+      for (let j = 0; j < array.length - i; j++) {
+        if (array[j] < array[j + 1]) {
+          min = j
+        }
+      }
+      // 将最小元素的位置与改次循环元素交换位置
+      swap(array, i, min);
+    }
+    return array;
+  }
+  console.log('选择排序', selectSort([3,2,1,4,5,6]))
+  console.log('*********快速排序***************')
+  function quickSort(array, left, right) {
+    let l = left;
+    let r = right;
+    if (l >= r) {
+        return;
+    }
+    let baseValue = array[left]; // 以左侧为基准值
+    while (l < r) {
+      while(array[r] >= baseValue && l < r) {
+        r --;
+      }
+      array[l] = array[r];
+      while(l < r && array[l] >= baseValue) {
+        i++
+      }
+      array[r] = array[l]
+    }
+    array[j] = baseValue;
+    quickSort(array, left, r - 1); // 分割出的左侧区间继续递归
+    quickSort(array, j + 1, right); // 分割出的右侧区间进行递归
+  }
+  const data = [3,5,4,6,0,7];
+  // quickSort(data, 0, data.length - 1)
+  console.log(data, 'data')
+</script>
+<body>
+  <h2>冒泡排序</h2>
+  <h2>选择排序</h2>
+  <h2>快速排序</h2>
+  <h2>插入排序</h2>
+  <h2>希尔排序</h2>
+  <h2>堆排序</h2>
+  <ul id='id'>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+</body>
+<script>
+  function Animal(name, age) {
+    this.name = name;
+    this.age = age;
+    this.eat = function() {
+      console.log('eat')
+    }
+  }
+  var a = new Animal('cat', 24);
+  function Cat(name, age) {
+    Animal.call(this, name, age);
+  }
+  var c = new Cat('dog', 24)
+  
+
+  function isPrime(num) {
+  if (num === 1) {
+    return true;
+  }
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      return false
+    }
+  }
+  return true
+}
+function getTotalZS(num) {
+  for (let i = 1; i < num; i++) {
+    if (isPrime(i)) {
+      console.log(i)
+    }
+  }
+}
+getTotalZS(10);
+
+
+function showLi() {
+  const dom = document.getElementById('id');
+  // childNodes非数组， 类数组而已
+  const childNodes = [...dom.childNodes].filter(i => i.nodeName.toLowerCase() === 'li');
+  console.log('childNodes', childNodes)
+  for (let i = 0; i < childNodes.length; i++) {
+    if (childNodes[i].nodeName.toLowerCase() === 'li') {
+      childNodes[i].addEventListener('click', function() {
+        alert(i)
+      })
+    }
+  }
+}
+</script>
+</html>

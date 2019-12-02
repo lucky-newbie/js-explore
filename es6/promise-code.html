@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>promise例题</h2>
+</body>
+<script>
+  // setTimeout(() => console.log('b'));
+  // new Promise(resolve => {
+  //   resolve();
+  //   console.log('a')
+  // })
+  // .then( () => {
+  //   new Promise(resolve => {
+  //     console.log('d');
+  //   }).then(() => {
+  //     console.log('e')
+  //   })
+  //   console.log('c');
+  //   Promise.resolve().then(() => {
+  //     console.log('f')
+  //   })
+  //   .then(()=> {
+  //     Promise.resolve().then(() => {
+  //       console.log('g')
+  //     })
+  //   })
+  // })
+  // console.log('h')
+  // console.log('**************')
+  // function fn1(resolve, reject) {
+  //   setTimeout(function() {
+  //       console.log('步骤一：执行');
+  //       resolve('1');
+  //   },500);
+  // }
+
+  // function fn2(resolve, reject) {
+  //     setTimeout(function() {
+  //         console.log('步骤二：执行');
+  //         resolve('2');
+  //     },100);
+  // }
+
+  // new Promise(fn1).then(function(val){
+  //     console.log(val);
+  //     return new Promise(fn2);
+  // }).then(function(val){
+  //     console.log(val);
+  //     return 33;
+  // }).then(function(val){
+  //     console.log(val);
+  // });
+</script>
+<script>
+  console.log('恶心的作用域？');
+  (function(){
+    b = 5;
+    console.log(window.b);
+    console.log(c);
+    if (function a(){}) {
+      var c = 1 + typeof a;
+    }
+    d(b);
+    function d(a, b){
+      console.log(arguments);
+    }
+    d(a); // 此处a not defined报错
+    console.log(c);
+    var b = 10;
+    console.log(b)
+  })()
+</script>
+</html>
