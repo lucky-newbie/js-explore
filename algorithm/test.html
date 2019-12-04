@@ -41,30 +41,49 @@
   }
   console.log('选择排序', selectSort([3,2,1,4,5,6]))
   console.log('*********快速排序***************')
-  function quickSort(array, left, right) {
-    let l = left;
-    let r = right;
-    if (l >= r) {
-        return;
+  function quickSort(array) {
+    if (array.length <=1) {
+      return array;
     }
-    let baseValue = array[left]; // 以左侧为基准值
-    while (l < r) {
-      while(array[r] >= baseValue && l < r) {
-        r --;
+    const index = array.splice(0, 1)[0];
+    const left = [];
+    const right = [];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] > index) {
+        right.push(array[i])
+      } else {
+        left.push(array[i])
       }
-      array[l] = array[r];
-      while(l < r && array[l] >= baseValue) {
-        i++
-      }
-      array[r] = array[l]
     }
-    array[j] = baseValue;
-    quickSort(array, left, r - 1); // 分割出的左侧区间继续递归
-    quickSort(array, j + 1, right); // 分割出的右侧区间进行递归
+    return quickSort(left).concat([index], quickSort(right))
   }
-  const data = [3,5,4,6,0,7];
-  // quickSort(data, 0, data.length - 1)
-  console.log(data, 'data')
+
+  console.log(quickSort([4,2,3,5,6]))
+
+  console.log('*****插入排序*********')
+  function insertSort(array) {
+    // 第一个位置认为是有序的，则从1开始
+    for (let i = 1; i < array.length; i++) {
+      for (let j = i; j > 0; j--) {
+        if (array[j] > array[j - 1]) {
+          [array[j], array[j - 1]] = [array[j - 1], array[j]];
+        }
+      }
+    }
+    return array;
+  }
+  const d = [4,2,1,5,3];
+  console.log(insertSort(d))
+
+  console.log('希尔排序')
+  function shellSort(array) {
+    let gap = Math.floor(array.length / 2);
+    while (gap !== 0) {
+      for (let i = gap; i < array.length; i++) {
+        
+      }
+    }
+  }
 </script>
 <body>
   <h2>冒泡排序</h2>

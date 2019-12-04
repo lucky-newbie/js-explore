@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  js对象深拷贝
+  使用for in操作
+  JSON.parse(JSON.stringify(obj))
+</body>
+<script>
+  function cloneDeep(obj) {
+    const cloneObj = obj instanceof Array ? [] : {};
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (typeof obj[key] === 'object') {
+          cloneObj[key] = cloneDeep(obj[key])
+        } else {
+          cloneObj[key] = obj[key]
+        }
+      }
+    }
+    return cloneObj;
+  }
+</script>
+</html>

@@ -18,6 +18,22 @@
     3.左边和右边的数据可以独立排序。对于左侧的数组数据，又可以取一个分界值，将该部分数据分成左右两部分，同样在左边放置较小值，右边放置较大值。右侧的数组数据也可以做类似处理
     4.重复上述过程，可以看出，这是一个递归定义。通过递归将左侧部分排好序后，再递归排好右侧部分的顺序。当左、右两个部分各数据排序完成后，整个数组的排序也就完成了
   */
+  function quickSort(array) {
+    if (array.length <=1) {
+      return array;
+    }
+    const index = array.splice(0, 1)[0];
+    const left = [];
+    const right = [];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] > index) {
+        right.push(array[i])
+      } else {
+        left.push(array[i])
+      }
+    }
+    return quickSort(left).concat([index], quickSort(right))
+  }
 
   ```
 
@@ -42,9 +58,6 @@
   }
 
   ```
-
-  * 希尔排序（不稳定排序）
-
   * 冒泡排序（稳定的排序 O(n^2)）
   ```
   /*
@@ -73,6 +86,33 @@
   * 归并排序（稳定排序）
 
   * 插入排序（稳定排序）
+  ```
+  /*
+    插入排序： 要求在这个已经排好的数据序列中插入一个数，但要求插入后此数据序列仍然有序， 适用于小规模数据
+    插入排序的工作原理就是将未排序数据，对已排序数据序列从后向前扫描，找到对应的位置并插入
+    1.认为第一个数是有序的，所以从i=1开始；
+    2.从有序的数后一个位置开始，也就是j=i，从后向前遍历，比较j和j-1大小，交换位置 
+  */
+  function insertSort(array) {
+    // 第一个位置认为是有序的，则从1开始
+    for (let i = 1; i < array.length; i++) {
+      for (let j = i; j > 0; j--) {
+        if (array[j] > array[j - 1]) {
+          [array[j], array[j - 1]] = [array[j - 1], array[j]];
+        }
+      }
+    }
+    return array;
+  }
+
+  ```
+  * 希尔排序（不稳定排序，  O(nlogn)）
+  ```
+  /*
+    希尔排序又称"缩小增量排序",归属于插入排序一类,简单来说,和我们的插入排序比,它更快
+  */
+
+  ```
 
 * 堆栈、队列、链表
   栈
@@ -82,7 +122,89 @@
 
 * 波兰式和逆波兰式
 
-* tree
-  中序遍历、前序遍历、后续遍历
-* 
+## tree（中序遍历、前序遍历、后续遍历、广度优先、深度优先）
+  
+  * 前序遍历：首先访问根节点，然后访问根节点的左子树，在访问根节点的右子树。
+  ```
+    function preOrder(root) {
+      if (!root) {
+        return []
+      }
+      let res = [];
+      res.push(root.val);
+      if (root.left) {
+          const leftRes = preorderTraversal(root.left);
+          // concat方法返回合并后的数组，原数组不变
+          res = res.concat(leftRes)
+      }
+      if (root.right) {
+          const rightRes = preorderTraversal(root.right);
+          res = res.concat(rightRes)
+      }
+      return res;
+    }
+  ```
+  * 中序遍历：首先访问根节点的左子树，然后访问根节点，再访问根节点右子树
+  ```
+  function inOrder(root) {
+    if (!root) {
+      return [];
+    }
+    let res = [];
+    if (root.left) {
+      const leftRes = inOrder(root.left);
+      res = res.concat(leftRes);
+    }
+    res.push(root.val);
+    if (root.right) {
+      const rightRes = inOrder(root.right);
+      res = res.concat(rightRes)
+    }
+    return res;
+  }
+
+  ```
+  * 后续遍历：首先访问根节点的左子树，然后访问根节点的右子树，最后访问根节点
+  ```
+  function postOrder(root) {
+    if (!root) {
+        return []
+    }
+    let res = [];
+    if (root.left) {
+        res = res.concat(postorderTraversal(root.left));
+    }
+    if (root.right) {
+        res = res.concat(postorderTraversal(root.right));
+    }
+    res.push(root.val);
+    return res;
+  }
+  ```
+  * 广度优先（采用队列方式解决）
+  ```
+    function BFS(root) {
+      if (!root) {
+        return [];
+      }
+      const res = [];
+      const queue = [root];
+      while(queue.length > 0) {
+          const v = []
+          const len =  queue.length;
+          for (let i = 0; i < len; i++) {
+              const node = queue.pop();
+              v.push(node.val);
+              if (node.left) {
+                  queue.unshift(node.left); // unshift原数组改变
+              }
+              if (node.right) {
+                  queue.unshift(node.right);
+              }
+          }
+          res.push(v)
+      }
+      return res;
+    }
+  ``` 
 
