@@ -16,3 +16,15 @@
 
 ## 预检请求
 * 浏览器的预检请求通过response中的Access-Control-Allow-Header 来判断是否有返回值
+
+* Access-Control-Expose-Headers
+  响应首部 Access-Control-Expose-Headers 列出了哪些首部可以作为响应的一部分暴露给外部。
+  1. 默认情况下，只有六种 simple response headers （简单响应首部）可以暴露给外部：
+    Cache-Control
+    Content-Language
+    Content-Type
+    Expires
+    Last-Modified
+    Pragma
+
+  想要暴露一个非简单响应首部，可以这样指定：Access-Control-Expose-Headers: Content-Length, X-Kuma-Revision
