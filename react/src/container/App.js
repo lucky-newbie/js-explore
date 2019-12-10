@@ -27,7 +27,6 @@ class App extends React.PureComponent{
   }
 
   render () {
-    console.log('parent render')
     const { time } = this.state;
     return <div>
       <h2>hello</h2>

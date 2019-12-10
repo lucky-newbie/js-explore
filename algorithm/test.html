@@ -97,6 +97,8 @@
     <li>2</li>
     <li>3</li>
   </ul>
+  <input type='text' />
+  <button onclick='startWorker()'>开始worker</button>
 </body>
 <script>
   function Animal(name, age) {
@@ -147,5 +149,38 @@ function showLi() {
     }
   }
 }
+
+console.log('******')
+function steps(n) {
+  if (n === 0) {
+    return 0;
+  }
+  if (n === 1) {
+    return 1;
+  }
+  if ( n === 2) {
+    return 2;
+  } else {
+    return steps(n - 1) + steps(n - 2);
+  }
+}
+console.log('steps', steps(4))
+</script>
+<script>
+  let worker;
+  function startWorker() {
+    if (typeof Worker !== 'undefined') {
+      if (typeof worker === 'undefined') {
+        worker = new Worker('./demo.js')
+      }
+      worker.onmessage = function(event) {
+        console.log(event, event.data)
+      }
+    }
+    
+  }
+  function stopWorker() {
+    worker.terminate();
+  }
 </script>
 </html>

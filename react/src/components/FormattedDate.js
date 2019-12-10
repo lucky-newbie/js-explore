@@ -15,7 +15,6 @@ class FormattedDate extends React.PureComponent{
   }
 
   render () {
-    console.log('child render')
     const { time } = this.props;
     return <div>时间： {time}</div>
   }
