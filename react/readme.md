@@ -10,7 +10,9 @@
 
 # 什么是jsx， 为什么使用
   jsx是一个语法糖，通过用js的方式写页面
-  优点：使用jsx方式写展现更加直观； jsx防止攻击（XSS）
+  优点：使用jsx方式写展现更加直观，可以很好的描述UI，提高开发效率； jsx防止攻击（XSS）
+  * jsx中可以是哪些值？
+    js合法表达式即可
 # 什么是纯函数？
   “纯函数”，不会尝试更改入参，且多次调用下相同的入参始终返回相同的结果。
 # react fiber
@@ -58,4 +60,84 @@
       };
     }
   ```
+* 组件的形式
+  1. function组件: 通常无状态，仅关注内容展示
+  2. class组件： 拥有状态和生命周期，继承Component
+* 修改state方式：
+  this.setState({}), 不要直接修改state
+
+* setState是批量更新的,因此对同一个状态执行多次只起一次作用，多余状态更新可以放在同一个setState中进行， 比如:
+```
+constructor(){
+  super();
+  this.state = {counter: 0}
+}
+componentDidMount() {
+  this.setState({counter: this.counter + 1},() => console.log(this.state.counter)) // 1
+  this.setState({counter: this.counter + 1},() => console.log(this.state.counter) ) // 1
+  this.setState({counter: this.counter + 1},() => console.log(this.state.counter) ) // 1
+
+
+  // 多次setState时，想要获得123的值，则使用如下方式
+  this.setState(state => ({counter: state.counter + 1}), () => {
+    console.log(this.state.counter)
+  })
+  this.setState(state => ({counter: state.counter + 1}), () => {
+    console.log(this.state.counter)
+  })
+  this.setState(state => ({counter: state.counter + 1}), () => {
+    console.log(this.state.counter)
+  })
+}
+```
+
+* setState通常是异步的， 获取setate值通常有三种方式
+  1. this.setState({state, props} => {console.log(state)})
+  2. 使用setTimeout:
+    setTimeout(() => {console.log(this.state.data)}, 4)
+  3. 原生事件中修改状态
+   componentDidMount() {
+     document.addEventListener('click', this.handleClick);
+   }
+   handleClick(e) => {
+    this.setState({count: this.state.count + 1});
+    console.log(this.state.count)
+   }
+
+  * 组件间通信方式
+   1. 父- 子： 通过props传递
+   2. 子-父： (状态提升)子组件通过调用父组件方法，进行状态提升 
+   3. 采用redux
+   4. 使用context(常用于组件库的开发)
+
+  * 生命周期（16.4版本）
+    1. 挂载
+      constructor()： 用来初始化state或进行方法绑定
+      static getDerivedStateFromProps()
+      render()
+      componentDidMount()
+    2. 更新
+      static getDerivedStateFromProps(props, state)
+      shouldComponentUpdate(preProps, preState): 默认返回true，首次渲染和调用forceUpdate不会调用该方法
+      render()
+      getSnapshotBeforeUpdate(preProps, preState)
+      componentDidUpdate(preProps, preState, snapshot)
+    3. 卸载
+      componentWillUnmount(): 在这里不应调用 setState()，因为该组件将永远不会重新渲染。组件实例卸载后，将永远不会再挂载它。
+    4. 错误处理
+      static getDerivedStateFromError(error)
+      componentDidCatch(error, info)
+  * 其他API
+    1. setState: 将对组件state的更改排入队列，并通知React需要使用更新后的state重新渲染此组件及其子组件
+    2. forceUpdate
+  * Class属性
+    defaultProps、displayName
+  * 实例属性
+    props、state
+  * render返回类型
+    1. React元素
+    2. 数组或Fragments
+    3. Protals
+    4. 字符串或数值类型
+    5. 布尔类型或null
   
