@@ -141,3 +141,20 @@ componentDidMount() {
     4. 字符串或数值类型
     5. 布尔类型或null
   
+  * ReactDO API
+    1. render(element, container[,callback])
+    2. hydrate(element, container[,callback])
+      用于服务端渲染
+    3. unmountComponentAtNode(container)
+      从 DOM 中卸载组件，会将其事件处理器（event handlers）和 state 一并清除。如果指定容器上没有对应已挂载的组件，这个函数什么也不会做。如果组件被移除将会返回 true，如果没有组件可被移除将会返回 false。
+    4. findDOMNode(ref) 严格模式下已被弃用
+
+    5. createPortal(child, container)
+      创建 portal。Portal 将提供一种将子节点渲染到 DOM 节点中的方式，该节点存在于 DOM 组件的层次结构之外。
+
+  * error buoundle(错误边界), 以下错误情景无法被捕获
+    1. 异步代码 setTimeout/requestAnimationFrame（回调函数)
+    2. 事件处理
+    3. 服务端渲染
+    4. 它自身抛出来的错误（并非它的子组件）
+    

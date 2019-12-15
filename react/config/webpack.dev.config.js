@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const devServerConfig = require('./webpack.devServer.config.js');
 
@@ -30,8 +31,8 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader',
-            
             options: {
+              plugins: ["@babel/plugin-proposal-class-properties"],
               presets: [
                 ["@babel/preset-env", {
                   "useBuiltIns": "usage",
@@ -63,6 +64,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       filename: 'index.html',
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin(),
   ]
 }
