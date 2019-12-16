@@ -5,7 +5,10 @@
 * webpack编写
 * 搜索框/弹窗封装组件
 * ant design使用
-* 
+* context传值
+* antdesign form简易版实现
+* redux实现
+* compose复合实现
 
 
 # 什么是jsx， 为什么使用
@@ -141,7 +144,7 @@ componentDidMount() {
     4. 字符串或数值类型
     5. 布尔类型或null
   
-  * ReactDO API
+  * ReactDOM API
     1. render(element, container[,callback])
     2. hydrate(element, container[,callback])
       用于服务端渲染
@@ -160,7 +163,21 @@ componentDidMount() {
     
 
 ## Redux
+  * 什么是redux?
+    redux是js的应用状态容器
+
   * store： store就是保存数据的地方，你可以把它看成一个数据，整个应用智能有一个store
   * state： state就是store里面存储的数据，store里面可以拥有多个state，Redux规定一个state对应一个View,只要state相同，view就是一样的，反过来也是一样的，可以通过store.getState( )获取
   * action： state的改变会导致View的变化，但是在redux中不能直接操作state也就是说不能使用this.setState来操作，用户只能接触到View。在Redux中提供了一个对象来告诉Store需要改变state。Action是一个对象其中type属性是必须的，表示Action的名称，其他的可以根据需求自由设置。
+  * reducer: 初始化state，定义修改state规则
+
+
+## react-redux 解决哪些问题？
+  * 解决监听store变化
+  * 不需要每次订阅
   
+  * 提供两个API： Provider、connect
+
+# vue与react对比
+
+# vuex与redux对比

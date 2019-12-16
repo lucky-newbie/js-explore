@@ -1,9 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import FormattedDate from 'components/FormattedDate'
 import ClickOnOutSide from 'components/ClickOnOutSide';
 import ContextTheme from 'components/Context';
 import MyDialog from 'components/MyDialog'
 import MyForm from 'components/MyForm';
+import CountReduxDemo from 'components/CountReduxDemo';
+
+import { A, B } from '../redux/reducer';
 
 class App extends React.PureComponent{
   constructor(props) {
@@ -82,10 +86,24 @@ class App extends React.PureComponent{
       <FormattedDate time={time.toLocaleTimeString()} />
       <ClickOnOutSide />
       <ContextTheme />
-      <MyDialog />
+      {/* <MyDialog /> */}
       <MyForm />
+      <CountReduxDemo />
+      <p>num: {this.props.num}</p>
+      <button onClick={this.props.A}>A</button>
+      <button onClick={this.props.B}>B</button>
     </div>
   }
 }
+const mapPropsToState = (state) => {
+  return {
+    num: state
+  }
+}
 
-export default App;
+const mapActionCreators = {
+  A,
+  B
+}
+// export default App;
+export default connect(mapPropsToState, mapActionCreators)(App);
