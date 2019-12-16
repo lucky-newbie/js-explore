@@ -32,7 +32,9 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              plugins: ["@babel/plugin-proposal-class-properties"],
+              plugins: [
+                "@babel/plugin-proposal-class-properties",
+              ],
               presets: [
                 ["@babel/preset-env", {
                   "useBuiltIns": "usage",

@@ -158,3 +158,9 @@ componentDidMount() {
     3. 服务端渲染
     4. 它自身抛出来的错误（并非它的子组件）
     
+
+## Redux
+  * store： store就是保存数据的地方，你可以把它看成一个数据，整个应用智能有一个store
+  * state： state就是store里面存储的数据，store里面可以拥有多个state，Redux规定一个state对应一个View,只要state相同，view就是一样的，反过来也是一样的，可以通过store.getState( )获取
+  * action： state的改变会导致View的变化，但是在redux中不能直接操作state也就是说不能使用this.setState来操作，用户只能接触到View。在Redux中提供了一个对象来告诉Store需要改变state。Action是一个对象其中type属性是必须的，表示Action的名称，其他的可以根据需求自由设置。
+  

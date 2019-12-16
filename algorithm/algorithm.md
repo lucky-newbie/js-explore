@@ -118,7 +118,24 @@
   栈
   堆
 * 递归
-  二分查找
+* 二分查找
+```
+// 二分查找建立在有序的前提下
+function binarySearch(array, target, low, high) {
+  const index = Math.floor((high - low) / 2);
+  const current = array[index];
+  if (current === target) {
+    return index;
+  }
+  if (current > target) {
+    binarySearch(array, target, index + 1, high)
+  }
+  if (current < target) {
+    binarySearch(array, target, low, index - 1)
+  }
+  return -1;
+}
+```
 
 * 波兰式和逆波兰式
 

@@ -2,6 +2,8 @@ import React from 'react';
 import FormattedDate from 'components/FormattedDate'
 import ClickOnOutSide from 'components/ClickOnOutSide';
 import ContextTheme from 'components/Context';
+import MyDialog from 'components/MyDialog'
+import MyForm from 'components/MyForm';
 
 class App extends React.PureComponent{
   constructor(props) {
@@ -80,6 +82,8 @@ class App extends React.PureComponent{
       <FormattedDate time={time.toLocaleTimeString()} />
       <ClickOnOutSide />
       <ContextTheme />
+      <MyDialog />
+      <MyForm />
     </div>
   }
 }

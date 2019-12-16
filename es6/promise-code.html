@@ -18,8 +18,9 @@
   .then( () => {
     new Promise(resolve => {
       console.log('d');
+      // resolve()
     }).then(() => {
-      console.log('e')
+      console.log('e') // 上面没有执行resolve，则不会执行到此行
     })
     console.log('c');
     Promise.resolve().then(() => {
@@ -32,19 +33,19 @@
     })
   })
   console.log('h')
-  console.log('**************')
+  console.log('**************') // a, h, d, c, f, g,b
   function fn1(resolve, reject) {
     setTimeout(function() {
         console.log('步骤一：执行');
         resolve('1');
-    },500);
+    },2000);
   }
 
   function fn2(resolve, reject) {
       setTimeout(function() {
           console.log('步骤二：执行');
           resolve('2');
-      },100);
+      },1000);
   }
 
   new Promise(fn1).then(function(val){
