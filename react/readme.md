@@ -179,5 +179,9 @@ componentDidMount() {
   * 提供两个API： Provider、connect
 
 # vue与react对比
-
+  * 语法层面：
+    1. 直接设置html方式： vue： v-html； react： dangerouslySetInnerHTML
+    2. 
+    3.
+    
 # vuex与redux对比
