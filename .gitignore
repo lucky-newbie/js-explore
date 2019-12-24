@@ -1,1 +1,3 @@
 *.history
+*vue/vue-app/node_modules/*
+*vue/egg-server/app/node_modules/*

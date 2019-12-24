@@ -40,7 +40,7 @@
 ## 指令是什么？ 有哪些?
   * 指令： 指令是带有v-的特殊特性
   * 指令的作用： 指令的职责是，当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM。
-  * 指令： v-model、v-bind、 v-on、 v-if、 v-else、 v-else-if、 v-show、 v-for、
+  * 指令： v-model、v-bind、 v-on、 v-if、 v-else、 v-else-if、 v-show、 v-for、v-slot、
 ## v-if与v-show得区别
   * v-if 是“真正”的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。
   * v-show 不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS（display属性） 进行切换。
@@ -51,7 +51,25 @@
   * 计算属性：是基于它们的响应式依赖进行缓存的。只在相关响应式依赖发生改变时它们才会重新求值。这就意味着只要 message 还没有发生改变
   * 方法：每当触发重新渲染时，调用方法将总会再次执行函数。
 
+## 组件通信方式
+  * 父- 子：
+    1. props
+    2. ref 通过this.$ref获取组件或真实dom
+  * 子-父：
+    1. 自定义事件方式。$emit
+  * 兄弟组件：
+    1. 通过共同祖辈组件搭桥，通过$parent\$root
+  * 祖先和后代之间(类似react中的context)
+    1. 通过provide/inject API方式
+  * 后代和祖辈间传值(比如组件库开发)
+    1. 实现dispatch方法
+  * 任意两个组件之间： 事件总线或vuex
+    
 
+
+## 组件命名方式
+  * 短划线， 如 component-button
+  * 首字母大写，如： ComponentButton
 
 ## 指令缩写
   * <a v-bind:href='url'>sss</a> -> <a :href='url'>sss</a>

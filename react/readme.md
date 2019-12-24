@@ -179,9 +179,31 @@ componentDidMount() {
   * 提供两个API： Provider、connect
 
 # vue与react对比
+  * vue对新手友好，react更注重整体设计
+  * react API简单，有完整的独立前端体系，比如虚拟dom，jsx，函数组件， hooks
+  * vue集百家所长，借鉴react angular
+
   * 语法层面：
     1. 直接设置html方式： vue： v-html； react： dangerouslySetInnerHTML
-    2. 
-    3.
-    
+    2. 孩子元素嵌套方式， vue：slot， react： children
+    3. 
+  * 组件增强
+    1. react采用hoc， vue采用mixins
+
 # vuex与redux对比
+
+
+
+## 技术选型考察点
+  * 团队现状
+  * 上手难度
+  * 生态
+  * 验证是否满足要求
+  * 库的考量点
+    1. npm数量
+    2. issue数量
+    3. 团队现状（贡献者多少， 主要贡献者多少
+    4. 是否支持按需加载
+    5. 国际化
+    6. 开发者
+    7. star数量
