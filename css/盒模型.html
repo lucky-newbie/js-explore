@@ -85,7 +85,7 @@
     实例题： 根据盒模型解释边距重叠
       1.兄弟节点之间有margin时，去最大值（当块级元素设置为overflow时，会创建一个BFC）
     
-    BFC/IFC(边距重叠解决方案)
+    BFC/IFC(边距重叠解决方案 css2.1中存在)
       1.bfc基本概念： 块级格式化上下文 ：Block Formatting Context
       2.bfc的原理（渲染规则）特点：
         a.bfc元素内在垂直方向会发生边距重叠
@@ -103,6 +103,38 @@
         a.解决浮动
         b.两栏自适应
         3.边距重叠
+    IFC(inline formatting context， css2.1中存在)
+    IFC的line box（线框）高度由其包含行内元素中最高的实际高度计算而来（不受到竖直方向的padding/margin影响)。
+      IFC有一下特性：
+      1.IFC中的line box一般左右都贴紧整个IFC，但是会因为float元素而扰乱。
+        float元素会位于IFC与与line box之间，使得line box宽度缩短。 
+      2. IFC中时不可能有块级元素的，当插入块级元素时（如p中插入div）会产生两个匿名块与div分隔开，
+        即产生两个IFC，每个IFC对外表现为块级元素，与div垂直排列。
+      3.子元素水平方向横向排列，并且垂直方向起点为元素顶部。
+      4.子元素只会计算横向样式空间，【padding、border、margin】，垂直方向样式空间不会被计算，【padding、border、margin】。
+      5.在垂直方向上，子元素会以不同形式来对齐（vertical-align）
+      6.能把在一行上的框都完全包含进去的一个矩形区域，被称为该行的行框（line box）。行框的宽度是由包含块（containing box）和与其中的浮动来决定。
+      7.IFC中的“line box”一般左右边贴紧其包含块，但float元素会优先排列。
+      8.IFC中的“line box”高度由 CSS 行高计算规则来确定，同个IFC下的多个line box高度可能会不同。
+      9.当 inline-level boxes的总宽度少于包含它们的line box时，其水平渲染规则由 text-align 属性值来决定。
+      10.当一个“inline box”超过父元素的宽度时，它会被分割成多个boxes，这些 oxes 分布在多个“line box”中。如果子元素未设置强制换行的情况下，“inline box”将不可被分割，将会溢出父元素
+    如何产生IFC？
+      块级元素中仅包含内联级别元素
+
+    GFC(GridLayout Formatting Contexts, css3中出现)
+      网格布局格式化上下文,当为一个元素设置display值为grid的时候，此元素将会获得一个独立的渲染区域，
+      我们可以通过在网格容器（grid container）上定义网格定义行（grid definition rows）和
+      网格定义列（grid definition columns）属性各在网格项目（grid item）上定义
+      网格行（grid row）和网格列（grid columns）为每一个网格项目（grid item）定义位置和空间。
+
+    FFC(Flex Formatting Contexts)直译为"自适应格式化上下文")
+      整体来说，FFC与BFC有点儿类似，但仍有以下几点区别：
+      Flexbox 不支持 ::first-line 和 ::first-letter 这两种伪元素
+      vertical-align 对 Flexbox 中的子元素 是没有效果的
+      float 和 clear 属性对 Flexbox 中的子元素是没有效果的，也不会使子元素脱离文档流(但是对Flexbox 是有效果的！)
+      多栏布局（column-*） 在 Flexbox 中也是失效的，就是说我们不能使用多栏布局在Flexbox 排列其下的子元素
+      Flexbox 下的子元素不会继承父级容器的宽
+
   </pre>
   <section id='margin'>
     <style>
