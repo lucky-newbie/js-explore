@@ -70,5 +70,56 @@
     return res;
   }
   /*方式五， 双层for循环，速度最慢*/
+
+  /*数组对象去重*/
+  const objData = [
+    {
+      name: "Kris",
+      age: "24"
+    },
+    {
+      name: "Andy",
+      age: "25"
+    },
+    {
+      name: "Kitty",
+      age: "25"
+    },
+    {
+      name: "Andy",
+      age: "25"
+    },
+    {
+      name: "Kitty",
+      age: "25"
+    },
+    {
+      name: "Andy",
+      age: "25"
+    },
+    {
+      name: "Kitty",
+      age: "25"
+    }
+  ];
+
+  function dataReducer(prev, cur, index) {
+    let obj = {}
+    const { name } = cur
+    obj[name] = cur
+    return {
+      ...prev,
+      ...obj
+    }
+    // const obj = {};
+    // const { name, age } = cur;
+    // obj[name] = age;
+    // return {
+    //   ...prev,
+    //   obj
+    // }
+  }
+  const res = objData.reduce(dataReducer, {});
+  console.log('res', res)
 </script>
 </html>

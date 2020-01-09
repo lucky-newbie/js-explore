@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>获取页面中出现最多次数的标签</title>
+</head>
+<body>
+  <div>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  </div>
+</body>
+<script>
+  function getLabels() {
+    const nodeList = document.body.getElementsByTagName('*'); // 获取所有标签
+    const map = new Map(); // 以标签名字为key， 存放标签出现次数
+    for (let i = 0; i < nodeList.length; i++) {
+      const ele = nodeList[i];
+      const name = ele.localName;
+      if (map.get(name)) {
+        map.set(name, (map.get(name) + 1))
+      } else {
+        map.set(name, 1)
+      }
+    }
+    return map;
+  }
+  
+  console.log(getLabels())
+</script>
+</html>
