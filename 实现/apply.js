@@ -30,7 +30,7 @@ Function.prototype.apply3 = function (context) {
   if (arguments[1]) { // 判断是否有第二个参数
    result = context.fn(...arguments[1])
   } else {
-    context.fn();
+    result = context.fn();
   }
   delete context.fn;
   return result;
