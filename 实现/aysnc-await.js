@@ -25,10 +25,10 @@ function _asyncToGenerator(fn) {
 }
 
 function asyncGeneratorStep(generator, resolve, reject, _next, _throw, key, args){
-  let info;
+  let info, value;
   try {
     info = generator[key](args);
-    const value = info.value;
+    value = info.value;
   } catch (error) {
     reject(error);
   }

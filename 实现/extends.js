@@ -19,10 +19,16 @@ function __extends(child, parent) {
     this.constructor = child;
   }
   // 原型继承，继承父类原型属性，但是无法向父类构造函数传参
-  child.prototype =
-    parent === null
-      ? Object.create(parent)
-      : ((__.prototype = parent.prototype), new __());
+  // child.prototype =
+  //   parent === null
+  //     ? Object.create(parent)
+  //     : ((__.prototype = parent.prototype), new __());
+  if (parent === null) {
+    child.prototype =  Object.create(parent)
+  } else {
+    __.prototype = parent.prototype;
+    child.prototype = new __();
+  }
 }
 
 var B = (function() {
@@ -61,7 +67,7 @@ function A(name,age){
   return this;
 };
 function _extends(A,B){
-   A.prototype.__proto__= B.prototype;
+  //  A.prototype.__proto__= B.prototype;
    A.prototype.constructor = A;
    Object.setPrototypeOf(A,B);
 };
