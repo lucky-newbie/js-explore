@@ -97,7 +97,7 @@
 
 /**
  * 寄生式继承（与借用构造函数类似）
- * 
+ * 是对原型式继承进行了二次封，装这样创建的对象不仅仅有父类的属性和方法，还新增了别的属性和方法
  */
 
  function create(o) {
@@ -125,7 +125,7 @@
   }
 
   function combine(child, parent){
-    var prototype = object(parent.prototype);
+    var prototype = createObj(parent.prototype);
     prototype.constructor = child;
     child.prototype = prototype;
   }
