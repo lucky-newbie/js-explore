@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  section{
+    margin-bottom: 12px;
+  }
+  
+</style>
+<body>
+  <style>
+    .c1{
+      width: 100%;
+      position: relative;
+    }
+    .c1::after{
+      content: '';
+      clear: both;
+      display: block; /* 默认为inline，则设置为block */
+      height: 0;
+      visibility: hidden
+    }
+    .left1{
+      float: left;
+      height: 200px;
+      width: 200px;
+      background: red;
+    }
+    .right1{
+      margin-left: 200px;
+      height: 100%;
+      background: green;
+    }
+  </style>
+  <section class="c1">
+    <div class="left1">浮动左侧</div>
+    <div class="right1">右侧</div>
+  </section>
+  <style>
+    .c2{
+      position: relative;
+    }
+    .left2{
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 200px;
+      height: 200px;
+      background: green;
+    }
+    .right2{
+      margin-left: 200px;
+      height: 200px;
+      background: red;
+    }
+  </style>
+  <section class='c2'>
+    <div class="left2">绝对定位left</div>
+    <div class="right2">right</div>
+  </section>
+  <style>
+    .c3{
+      display: table;
+      width: 100%;
+    }
+    .c3 > div{
+      display: table-cell;
+    }
+    .left3{
+      width: 200px;
+      height: 200px;
+      background: red;
+    }
+    .right3{
+      background: green;
+    }
+  </style>
+  <section class="c3">
+    <div class="left3">table left</div>
+    <div class="right3">right</div>
+  </section>
+  <style>
+    .c4{
+      display: flex;
+    }
+    .left4{
+      display: flex;
+      width: 200px;
+      height: 200px;
+      background: green;
+    }
+    .right4{
+      display: flex;
+      flex: 1;
+      background: red;
+    }
+  </style>
+  <section class="c4">
+    <div class="left4">flex left</div>
+    <div class="right4">right</div>
+  </section>
+  <style>
+    .c5{
+      display: grid;
+      grid-template-columns:  200px auto;
+    }
+    .left5{
+      background: red;
+    }
+    .right5{
+      background: green;
+    }
+  </style>
+  <section class="c5">
+    <div class='left5'>left</div>
+    <div class='right5'>right</div>
+  </section>
+</body>
+</html>

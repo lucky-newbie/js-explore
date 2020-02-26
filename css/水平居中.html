@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>水平居中</title>
+</head>
+<body>
+  <h2>水平布局</h2>
+  <h3>行内元素， text-align: center</h3>
+    <style>
+      .s1{
+        color: red;
+        margin: 0 12px;
+        border: 1px solid;
+        text-align: center;
+      }
+    </style>
+    <input class='s1' />
+  <h3>块级元素</h3>
+  <h4>固定宽度</h4>
+    <style>
+      .d1{
+        width: 200px;
+        border: 1px solid;
+        margin: 0 auto;
+        margin-bottom: 12px;
+      }
+    </style>
+    <div class='d1'>固定宽度1; 优点：只需对子级进行设置margin即可实现居中效果；
+      缺点：如果子级脱离文档流，将会导致margin失效，比如float； position：absolute/fixed；
+    </div>
+    
+  <h4>非固定宽度</h4>
+    <style>
+      .d3{
+        display: table;
+        margin: 0 auto;
+      }
+    </style>
+    <div class='d3'>
+      table布局
+    </div>
+    <style>
+      .d4{
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+    <div class="d4">flex布局</div>
+    <style>
+      .c3{
+        text-align: center;
+      }
+      .d5{
+        display: inline-block;
+      }
+    </style>
+    <div class="c3">
+        <div class="d5">text-align + inline-block, 优点：兼容性好；缺点：text-align具有继承性</div>
+    </div>
+    <style>
+      .c6{
+        
+      }
+      .d6{
+        margin: 0 auto;
+        width: fit-content;
+      }
+    </style>
+    <!-- <div class="c6"> -->
+      <div class="d6">fit-content; css3中新增属性</span>
+    <!-- </div> -->
+    <style>
+      .c7{
+        display: grid;
+        grid-template-columns: 100%;
+        justify-items: center;
+      }
+    </style>
+    <section class="c7">剧中？</section>
+    <style>
+      .c1{
+        width: 100%;
+        overflow: hidden;
+      }
+    .d2{
+      position: absolute;
+      height: 100px;
+      left: 50%;
+      transform: translateX(-50%)
+    }
+    </style>
+    <div class='c1'>
+        <div class='d2'>非固定宽度，绝对定位+ transform：translateX; 缺点：transform为css3属性，浏览器兼容性问题</div>
+    </div>
+    
+  </body>
+</html>

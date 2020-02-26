@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>垂直居中</title>
+</head>
+<body>
+    <h3>纯文字类</h3>
+    <style>
+      .d1{
+        width: 100%;
+        height: 40px;
+        font-size: 12px;
+        line-height: 40px;
+        background: red;
+      }
+    </style>
+    <div class="d1">
+      纯文字内容
+    </div>
+    <h3>flex方式</h3>
+    <style>
+      .d2{
+        display: flex;
+        align-items: center;
+        height: 40px;
+        background: green;
+      }
+      .triangle{
+        width: 0px;
+        height: 0px;
+        border: 5px solid red;
+        border-color: transparent transparent red transparent;
+      }
+    </style>
+    <div class="d2">flex布局垂直居中; 优点：简单；缺点：兼容ie10以上</div>
+    <div class="triangle"></div>
+    <h3>table布局方式</h3>
+    <style>
+      .d3{
+        display: table;
+        width: 100%;
+      }
+      .item{
+        display: table-cell;
+        vertical-align: middle;
+        height: 40px;
+        background: pink;
+      }
+    </style>
+    <div class="d3">
+      <div class="item">table布局方式; 优点：兼容性好；缺点：vertical-align具有继承性,</div>
+    </div>
+    <h3>绝对定位 + transform方式</h3>
+    <style>
+      .d4{
+        position: relative;
+        width: 100%;
+        height: 400px;
+        background: red;
+      }
+      .item4{
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: green;
+      }
+    </style>
+    <div class="d4">
+      <div class="item4">绝对定位+  transform; 优点：不会因为子元素脱离文档流不居中；缺点：transform为css3属性，浏览器兼容性问题</div>
+    </div>
+</body>
+</html>
