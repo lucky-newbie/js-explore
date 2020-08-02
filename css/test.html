@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html, body{
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+    <style>
+      /* 清除浮动方式： 父元素设置overflow：hidden/auto 或给父元素增加伪元素，设置clear：both*/
+      .container{
+        width: 100%;
+        margin-bottom: 12px;
+        /* height: 200px; */
+        overflow: hidden;
+      }
+      .container::after{
+        content: ' ';
+        overflow: auto;
+        display: block;
+        /* clear: both; */
+        height: 0px;
+      }
+      .left {
+        width: 200px;
+        height: 200px;
+        float: left;
+        background-color: red;
+      }
+      .right {
+        margin-left: 200px;
+        /* height: 200px; */
+        background-color: green;
+      }
+    </style>
+  <section class='container'>
+    <div class="left">浮动left</div>
+    <div class="right">right</div>
+  </section>
+
+  <style>
+    .container1{
+      position: relative;
+      margin-bottom: 12px;
+    }
+    .left1{
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+    .right1{
+      margin-left: 200px;
+      height: 200px;
+      background-color: green;
+    }
+  </style>
+  <section class="container1">
+    <div class="left1">left1</div>
+    <div class="right1">right1</div>
+  </section>
+
+  <style>
+    .container2{
+      display: flex;
+      height: 200px;
+      margin-bottom: 12px;
+    }
+    .left2{
+      display: flex;
+      width: 200px;
+      background-color: pink;
+    }
+    .right2{
+      display: flex;
+      flex: 1;
+      background-color: blue;
+    }
+
+  </style>
+  <section class="container2">
+    <div class="left2">flex 布局left2</div>
+    <div class="right2">right2</div>
+  </section>
+  <style>
+    .c3{
+      display: table;
+      display: table;
+      width: 100%;
+      height: 200px;
+      margin-bottom: 12px;
+    }
+    .left3{
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      width: 200px;
+      height: 200px;
+      background: green;
+    }
+    .right3{
+      background: red;
+      display: table-cell;
+    }
+  </style>
+  <section class="c3">
+      <div class="left3">表格布局left3</div>
+      <div class="right3">right3</div>
+  </section>
+
+  <style>
+    .c4{
+      display: grid;
+      grid-template-columns: 200px auto;
+      /* grid-template-rows: 200px; */
+    }
+    .left4{
+      height: 200px;
+      background: green;
+      justify-items: center;
+    }
+    .right4{
+      /* height: 100%; */
+      background: red;
+    }
+  </style>
+  <div class="c4">
+    <div class="left4">grid布局</div>
+    <div class="right4"></div>
+  </div>
+</body>
+</html>

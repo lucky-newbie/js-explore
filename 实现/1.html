@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+   /*
+  实现一个拆分函数，如下所示:
+  split (input, listOfTokens) ==> listOfTokens
+  例如 1:
+  eg. split ( "abc,def.ghi", { "ef", "c" } )
+  ==> { "ab", ",d", ".ghi" }
+  例如 2:
+  eg. split ( "abc---def::ghi::jkl:mno-", { "--", "ghi", ":", "-", "rst" } )
+  由于这两个令牌:“——”、“——”，因此可能有两个分隔符。这使得分裂变得模糊。
+  option 1:
+  break like this: "abc" -- "" - "def" : "" : "" ghi "" : "" : "jkl" : "mno" - ""
+  ==> { "abc", "", "def", "", "", "", "", "jkl", "mno", "" }
+  option 2:
+  ==> { "abc", "", "", "def", "", "", "", "", "jkl", "mno", "" }
+  注意：不使用正则表达式
+  */
+  const spreator = '#'; // 唯一值 Symbol，不能修改啊
+  function split(str, listToken) {
+    if (typeof listToken !== 'object') {
+      throw new Error('listToken 不是对象');
+    }
+    for(let key of Object.keys(listToken)) {
+      if (str.indexOf(key) > -1) {
+        str = str.split(key).join(spreator);
+      }
+    }
+    return str.split(spreator);
+  }
+  const data = 'abc---def::ghi::jkl:mno-';
+  const token = { "--": "--", "ghi": "ghi", ":": ":", "-": "-", "rst": "rst" };
+  console.log('*********', data)
+  console.log(split(data, token))
+</script>
+<script>
+
+    var a = 1;
+    var b = a == 2 ? 3 : (console.log(1222), 4)
+</script>
+<body>
+  
+</body>
+</html>

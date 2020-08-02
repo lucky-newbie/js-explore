@@ -1,3 +1,7 @@
 *.history
 *vue/vue-app/node_modules/*
 *vue/egg-server/app/node_modules/*
+node/*
+ufc/*
+sso-demo/*
+test/*
