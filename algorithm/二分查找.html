@@ -13,6 +13,7 @@
     */
     function binarySearch(arr, target, left,  right) {
         while(left <= right) {
+            // 此处  left + right，由于是整形，当足够大的时候，可能会出现整形益处， 可修改为 mid = left + (right - left) / 2
             var middle = Math.floor((left + right) / 2);
             if (arr[middle] == target) {
                 return middle
