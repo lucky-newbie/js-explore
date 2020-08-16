@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS命名方式</title>
+</head>
+<body>
+    <pre>
+        1.BEM:BEM 是 Block、Element、Modifier 三个单词的缩写，Block 代表独立的功能组件，
+        Element 代表功能组件的一个组成部分，Modifier 对应状态信息。
+
+        2.OOCSS、
+        3.AMCSS
+    </pre>
+    <hr />
+    <pre>
+        通过工具解决命名冲突， css module
+        弊端：手动覆盖样式比较难，css名字已经被编译了
+    </pre>
+    <pre>
+        CSS in JavaScript 的解决方案之一： styled-compoents， 示列：
+        const Button = styled.button`
+            background: transparent;
+            border-radius: 3px;
+            border: 2px solid palevioletred;
+            color: palevioletred;
+            margin: 0.5em 1em;
+            padding: 0.25em 1em;
+            ${props => props.primary && css`
+            background: palevioletred;
+            color: white;
+            `}
+        `;
+        const Container = styled.div`
+            text-align: center;
+        `
+        render(
+            <Container>
+            <Button>Normal Button</Button>
+            <Button primary>Primary Button</Button>
+            </Container>
+        );
+
+        其他css in javascript方式：https://github.com/MicheleBertoli/css-in-js
+    </pre>
+</body>
+</html>
